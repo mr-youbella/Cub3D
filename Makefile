@@ -1,5 +1,5 @@
 CC = cc 
-FLAGS = -Wall -Wextra -Werror -Imlx -Ofast
+FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math
 NAME = cub3D
 
 SRCS = cub3d.c handle_distroy.c key_alph.c parse_player.c rotation_key.c update_Player.c
