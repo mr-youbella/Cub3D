@@ -1,33 +1,49 @@
 #include "cub3d.h"
 
-int	check_key_moves(int key_code, void *param)
+void	check_key_moves(void *arg)
 {
-	t_player_map *player = (t_player_map *)param;
-	if (key_code == KEY_W)
+	t_player_map *player = (t_player_map *)arg;
+	float new_pos_x;
+	float new_pos_y;
+	if (mlx_is_key_down(player->game->init, MLX_KEY_W))
 	{
-		player->pos_x += player->dir_x;
-		player->pos_y += player->dir_y;
+		new_pos_x = player->pos_x + (player->dir_x * 0.1);
+    	new_pos_y = player->pos_y + (player->dir_y * 0.1);
+		if (player->map[(int)player->pos_y][(int)player->pos_x] != '1')
+			player->pos_x = new_pos_x;
+
+		if (player->map[(int)new_pos_y][(int)new_pos_x] != '1')
+			player->pos_y = new_pos_y;
 	}
-	else if (key_code == KEY_S)
+	else if (mlx_is_key_down(player->game->init, MLX_KEY_S))
 	{
-		player->pos_x -= player->dir_x;
-    	player->pos_y -= player->dir_y;
+		new_pos_x = player->pos_x - (player->dir_x * 0.1);
+    	new_pos_y = player->pos_y - (player->dir_y * 0.1);
+		if (player->map[(int)player->pos_y][(int)player->pos_x] != '1')
+			player->pos_x = new_pos_x;
+
+		if (player->map[(int)new_pos_y][(int)new_pos_x] != '1')
+			player->pos_y = new_pos_y;
 	}
-	else if (key_code == KEY_A )
+	else if (mlx_is_key_down(player->game->init, MLX_KEY_A))
 	{
-		player->pos_x -= player->plane_x;
-    	player->pos_y -= player->plane_y;
+		new_pos_x = player->pos_x - (player->plane_x * 0.1);
+    	new_pos_y = player->pos_y - (player->plane_y * 0.1);
+		if (player->map[(int)player->pos_y][(int)player->pos_x] != '1')
+			player->pos_x = new_pos_x;
+
+		if (player->map[(int)new_pos_y][(int)new_pos_x] != '1')
+			player->pos_y = new_pos_y;
 	}
-	else if (key_code == KEY_D)
+	else if (mlx_is_key_down(player->game->init, MLX_KEY_D))
 	{
-		player->pos_x += player->plane_x;
-   		player->pos_y += player->plane_y;
+		new_pos_x = player->pos_x + (player->plane_x * 0.1);
+   		new_pos_y = player->pos_y + (player->plane_y * 0.1);
+		if (player->map[(int)player->pos_y][(int)player->pos_x] != '1')
+			player->pos_x = new_pos_x;
+
+		if (player->map[(int)player->pos_y][(int)player->pos_x] != '1')
+			player->pos_y = new_pos_y;
 	}
 	update(player->game, player);
-	return (0);
-}
-
-void	handle_mlx_hook(t_player_map *player)
-{
-	mlx_hook(player->game->window, 2, 0, check_key_moves, player);
 }

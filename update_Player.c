@@ -20,13 +20,16 @@ void update(t_game *game, t_player_map *player)
 	float draw_start, draw_end;
 	int start;
 	int color;
+	
+
 	while (columns < width)
 	{
 		int y = 0;
 		while (y < height / 2)
-			mlx_pixel_put(game->init, game->window, columns, y++, 0x0000FF);
+			mlx_put_pixel(game->img, columns, y++, 0x233d3c);
+
 		while (y < height)
-			mlx_pixel_put(game->init, game->window, columns, y++, 0x000000);
+			mlx_put_pixel(game->img, columns, y++, 0x000000FF);
 		columns++;
 	}
 	columns = 0;
@@ -70,17 +73,16 @@ void update(t_game *game, t_player_map *player)
 				side_dist_x += delta_dist_x;
 				map_x += step_x;
 				side = 0;
-				color = 0x854684;
+				color = 0x800080FF;
 			}
 			else
 			{
 				side_dist_y += delta_dist_y;
 				map_y += step_y;
 				side = 1;
-				color = 0x880000;
+				color = 0xFF69B4FF;
 			}
-			printf("Y = %d - X = %d\n", map_y, map_x);
-			if (player->map[map_y][map_x] != '0')
+			if (player->map[map_y][map_x] == '1')
 				mur = 49;
 		}
 		if (side == 0 && ray_dir_x != 0)
@@ -97,9 +99,11 @@ void update(t_game *game, t_player_map *player)
 		start = draw_start;
 		while (start < draw_end)
 		{
-			mlx_pixel_put(game->init, game->window, columns, start, color);
+			mlx_put_pixel(game->img, columns, start, color);
 			start++;
 		}
 		columns++;
 	}
+	player->pos_x += game->x;
+	player->pos_y += game->y;
 }

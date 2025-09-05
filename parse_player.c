@@ -16,13 +16,13 @@ void	check_pos(char c, t_player_map *player)
 {
 	if (c == 'N')
 	{
-		1 && (player->dir_x = (float)cos(M_PI / 2), player->dir_y = (float)sin(M_PI / 2));
+		1 && (player->dir_x = (float)cos((3 * M_PI) / 2), player->dir_y = (float)sin((3 * M_PI) / 2));
 		player->plane_x = -player->dir_y * 0.66; 
 		player->plane_y = player->dir_x * 0.66;
 	}
 	else if (c == 'S')
 	{
-		1 && (player->dir_x = (float)cos((3 * M_PI) / 2), player->dir_y = (float)sin((3 * M_PI) / 2));
+		1 && (player->dir_x = (float)cos(M_PI / 2), player->dir_y = (float)sin(M_PI / 2));
 		player->plane_x = -player->dir_y * 0.66; 
 		player->plane_y = player->dir_x * 0.66;
 	}
@@ -54,8 +54,8 @@ void	player_position(t_player_map *player)
 			if (player->map[i][j] == 'N' || player->map[i][j] == 'S'
 				|| player->map[i][j] == 'E' || player->map[i][j] == 'W')
 			{
-				player->pos_x = j;
-				player->pos_y = i;
+				player->pos_x = j + 0.5;
+				player->pos_y = i + 0.5;
 				check_pos(player->map[i][j], player);
 				return ;
 			}

@@ -7,23 +7,26 @@
 # define KEY_D 2
 
 #include <math.h>
-#include "mlx.h"
 #include <libc.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "MLX42.h"
 
 typedef struct s_game
 {
 	void	*window;
-	void	*init;
+	mlx_t	*init;
 	int		map_x;
 	int		map_y;
 	int		a;
 	int		w;
 	int		d;
 	int		s;
+	int		x;
+	int		y;
+	mlx_image_t *img;
 }	t_game;
 
 
@@ -41,7 +44,10 @@ typedef struct s_player_map
 
 
 void	player_position(t_player_map *player);
-void	handle_mlx_hook(t_player_map *player);
 void	update(t_game *game, t_player_map *player);
+void	check_key_moves(void *param);
+void	check_fleche_key(void *arg);
+void	destroy(void *arg);
+void	close_window(void *arg);
 
 #endif
