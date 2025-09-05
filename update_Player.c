@@ -3,8 +3,6 @@
 void update(t_game *game, t_player_map *player)
 {
 	int columns = 0;
-	int width = 1536;
-	int height = 960;
 	float camera_x;
 	float ray_dir_x;
 	float ray_dir_y;
@@ -22,24 +20,24 @@ void update(t_game *game, t_player_map *player)
 	int color;
 	
 
-	while (columns < width)
+	while (columns < WIDTH)
 	{
 		int y = 0;
-		while (y < height / 2)
+		while (y < HEIGHT / 2)
 			mlx_put_pixel(game->img, columns, y++, 0x233d3c);
 
-		while (y < height)
+		while (y < HEIGHT)
 			mlx_put_pixel(game->img, columns, y++, 0x000000FF);
 		columns++;
 	}
 	columns = 0;
-	while (columns < width)
+	while (columns < WIDTH)
 	{
 		map_x = (int)player->pos_x;
 		map_y = (int)player->pos_y;
 		side = -1;
 		mur = 48;
-		camera_x = 2 * ((double)columns / width) - 1;
+		camera_x = 2 * ((double)columns / WIDTH) - 1;
 		ray_dir_x = player->dir_x + (player->plane_x * camera_x);
 		ray_dir_y = player->dir_y + (player->plane_y * camera_x);
 		if (ray_dir_x)
@@ -73,29 +71,41 @@ void update(t_game *game, t_player_map *player)
 				side_dist_x += delta_dist_x;
 				map_x += step_x;
 				side = 0;
-				color = 0x800080FF;
 			}
 			else
 			{
 				side_dist_y += delta_dist_y;
 				map_y += step_y;
 				side = 1;
-				color = 0xFF69B4FF;
 			}
 			if (player->map[map_y][map_x] == '1')
 				mur = 49;
+		}
+		if (!side)
+		{
+			if (step_x == - 1)
+				color = 0x800080FF;
+			else
+				color = 0xFD415F;
+		}
+		else if (side == 1)
+		{
+			if (step_y == - 1)
+				color = 0xDF14545;
+			else
+				color = 0x809980FF;
 		}
 		if (side == 0 && ray_dir_x != 0)
 			perp_w_dist = (map_x - player->pos_x + (1 - step_x) / 2) / ray_dir_x;
 		else if (side == 1 && ray_dir_y != 0)
 			perp_w_dist = (map_y - player->pos_y + (1 - step_y) / 2) / ray_dir_y;
-		l_height = (int)(height / perp_w_dist);
-		draw_start = -l_height / 2 + height / 2;
+		l_height = (int)(HEIGHT / perp_w_dist);
+		draw_start = -l_height / 2 + HEIGHT / 2;
 		if (draw_start < 0)
 			draw_start = 0;
-		draw_end = (l_height / 2) + (height / 2);
-		if (draw_end >= height)
-			draw_end = height - 1;
+		draw_end = (l_height / 2) + (HEIGHT / 2);
+		if (draw_end >= HEIGHT)
+			draw_end = HEIGHT - 1;
 		start = draw_start;
 		while (start < draw_end)
 		{
