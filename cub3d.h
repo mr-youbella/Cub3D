@@ -1,11 +1,8 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#define KEY_W 13
-#define KEY_A 0
-#define KEY_S 1
-#define KEY_D 2
-
+#define WIDTH 1536
+#define HEIGHT 960
 #include <math.h>
 #include <libc.h>
 #include <stdio.h>

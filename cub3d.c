@@ -6,10 +6,10 @@ int	main()
 
 	game = malloc(sizeof(t_game));
 	memset(game, 0, sizeof(t_game));
-	game->init = mlx_init(1536, 960, "Cub3d_CRAFT", false);
+	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", false);
 	if (!game->init)
 		return (1);
-	game->img = mlx_new_image(game->init, 1536, 960);
+	game->img = mlx_new_image(game->init, WIDTH, HEIGHT);
 	mlx_image_to_window(game->init, game->img, 0, 0);
 	t_player_map	*player;
 	player = malloc(sizeof(t_player_map));
