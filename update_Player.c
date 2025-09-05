@@ -3,6 +3,8 @@
 void update(t_game *game, t_player_map *player)
 {
 	int columns = 0;
+	int width = 1536;
+	int height = 960;
 	float camera_x;
 	float ray_dir_x;
 	float ray_dir_y;
@@ -17,27 +19,27 @@ void update(t_game *game, t_player_map *player)
 	float perp_w_dist;
 	float draw_start, draw_end;
 	int start;
-	int color;
 	
+	mlx_texture_t *texture;
 
-	while (columns < WIDTH)
+	while (columns < width)
 	{
 		int y = 0;
-		while (y < HEIGHT / 2)
+		while (y < height / 2)
 			mlx_put_pixel(game->img, columns, y++, 0x233d3c);
 
-		while (y < HEIGHT)
+		while (y < height)
 			mlx_put_pixel(game->img, columns, y++, 0x000000FF);
 		columns++;
 	}
 	columns = 0;
-	while (columns < WIDTH)
+	while (columns < width)
 	{
 		map_x = (int)player->pos_x;
 		map_y = (int)player->pos_y;
 		side = -1;
 		mur = 48;
-		camera_x = 2 * ((double)columns / WIDTH) - 1;
+		camera_x = 2 * ((double)columns / width) - 1;
 		ray_dir_x = player->dir_x + (player->plane_x * camera_x);
 		ray_dir_y = player->dir_y + (player->plane_y * camera_x);
 		if (ray_dir_x)
@@ -81,37 +83,62 @@ void update(t_game *game, t_player_map *player)
 			if (player->map[map_y][map_x] == '1')
 				mur = 49;
 		}
-		if (!side)
+		if (side == 0)
 		{
-			if (step_x == - 1)
-				color = 0x800080FF;
+			if (step_x == -1)
+				texture = game->img1;
 			else
-				color = 0xFD415F;
+				texture = game->img2;
 		}
-		else if (side == 1)
+		else
 		{
-			if (step_y == - 1)
-				color = 0xDF14545;
+			if (step_y == -1)
+				texture = game->img3;
 			else
-				color = 0x809980FF;
+				texture = game->img4;
 		}
 		if (side == 0 && ray_dir_x != 0)
 			perp_w_dist = (map_x - player->pos_x + (1 - step_x) / 2) / ray_dir_x;
 		else if (side == 1 && ray_dir_y != 0)
 			perp_w_dist = (map_y - player->pos_y + (1 - step_y) / 2) / ray_dir_y;
-		l_height = (int)(HEIGHT / perp_w_dist);
-		draw_start = -l_height / 2 + HEIGHT / 2;
+		l_height = (int)(height / perp_w_dist);
+		draw_start = -l_height / 2 + height / 2;
 		if (draw_start < 0)
 			draw_start = 0;
-		draw_end = (l_height / 2) + (HEIGHT / 2);
-		if (draw_end >= HEIGHT)
-			draw_end = HEIGHT - 1;
+		draw_end = (l_height / 2) + (height / 2);
+		if (draw_end >= height)
+			draw_end = height - 1;
 		start = draw_start;
+
+		float wall_x;
+		if (side == 0)
+			wall_x = player->pos_y + perp_w_dist * ray_dir_y;
+		else
+			wall_x = player->pos_x + perp_w_dist * ray_dir_x;
+		wall_x -= floor(wall_x);
+
+		int tex_x = (int)(wall_x * (float)texture->width);
+
+		if ((side == 0 && ray_dir_x > 0) || (side == 1 && ray_dir_y < 0))
+			tex_x = texture->width - tex_x - 1;
 		while (start < draw_end)
 		{
+			int d = (start * 256 - height * 128 + l_height * 128);
+			int tex_y = ((d * texture->height) / l_height) / 256;
+
+			int index = (tex_y * texture->width + tex_x) * 4;
+			size_t r = texture->pixels[index + 0];
+			size_t g = texture->pixels[index + 1];
+			size_t b = texture->pixels[index + 2];
+			size_t a = texture->pixels[index + 3];
+
+			size_t color = (r << 24) | (g << 16) | (b << 8) | a;
+
 			mlx_put_pixel(game->img, columns, start, color);
+
 			start++;
 		}
+
 		columns++;
 	}
 	player->pos_x += game->x;

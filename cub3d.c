@@ -1,15 +1,15 @@
 #include "cub3d.h"
 
-int main()
+int	main()
 {
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
 	memset(game, 0, sizeof(t_game));
-	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", false);
+	game->init = mlx_init(1536, 960, "Cub3d_CRAFT", false);
 	if (!game->init)
 		return (1);
-	game->img = mlx_new_image(game->init, WIDTH, HEIGHT);
+	game->img = mlx_new_image(game->init, 1536, 960);
 	mlx_image_to_window(game->init, game->img, 0, 0);
 	t_player_map	*player;
 	player = malloc(sizeof(t_player_map));
@@ -25,7 +25,7 @@ int main()
 		"110000010001111111100001",
 		"111111111000000000000001",
 		"1001111111000000S0000011",
-		"111111111100000000000001",
+		"11111111100000000000001",
 		"100000000000000000000001",
 		"100000000000000000000001",
 		"100000000111111111000001",
@@ -37,6 +37,10 @@ int main()
 	};
 	player->map = map;
 	player_position(player);
+	game->img1 = mlx_load_png("mk1.png");
+	game->img2 = mlx_load_png("mk2.png");
+	game->img3 = mlx_load_png("mk3.png");
+	game->img4 = mlx_load_png("mk4.png");
 	update(game, player);
 	mlx_loop_hook(game->init, check_key_moves, player);
 	mlx_loop_hook(game->init, check_fleche_key, player);

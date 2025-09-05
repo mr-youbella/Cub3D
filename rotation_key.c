@@ -1,4 +1,3 @@
-
 #include "cub3d.h"
 
 void	check_fleche_key(void *arg)
