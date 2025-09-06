@@ -1,16 +1,18 @@
 CC = cc 
-FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math
+FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math -fsanitize=address -g
 NAME = cub3D
 
-SRCS = cub3d.c handle_distroy.c key_alph.c parse_player.c rotation_key.c update_Player.c
+SRCS = cub3d.c handle_distroy.c key_alph.c rotation_key.c update_Player.c \
+		youbella/walls.c youbella/parse_player.c youbella/get_next_line.c youbella/map.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) -o $(NAME)
+		@make -C libft
+		$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a -o $(NAME)
 
-%.o: %.c
+%.o: %.c cub3d.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
