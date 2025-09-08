@@ -32,7 +32,6 @@ typedef struct	s_map_data
 	size_t 	c_color;
 }	t_map_data;
 
-
 typedef struct	s_walls
 {
 	short			side;
@@ -48,7 +47,6 @@ typedef struct	s_walls
 	mlx_texture_t	*we_img;
 	mlx_texture_t	*ea_img;
 } t_walls;
-
 
 typedef struct s_data
 {
