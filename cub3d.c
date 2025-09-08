@@ -9,7 +9,7 @@ int	main(int argc, char **argv)
 		return (1);
 	game = malloc(sizeof(t_game));
 	ft_memset(game, 0, sizeof(t_game));
-	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", false);
+	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", true);
 	if (!game->init)
 		return (1);
 	walls = malloc(sizeof(t_walls));

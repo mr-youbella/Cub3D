@@ -86,6 +86,4 @@ void update(t_game *game, t_player_map *player)
 		image_wall(game, player, player->walls);
 		columns++;
 	}
-	player->pos_x += game->x;
-	player->pos_y += game->y;
 }

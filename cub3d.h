@@ -1,8 +1,8 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#define WIDTH 1080
-#define HEIGHT 610
+#define WIDTH 1024
+#define HEIGHT 640
 #include <math.h>
 #include <libc.h>
 #include <stdio.h>
@@ -33,12 +33,6 @@ typedef struct s_game
 	mlx_t *init;
 	int map_x;
 	int map_y;
-	int a;
-	int w;
-	int d;
-	int s;
-	int x;
-	int y;
 	mlx_image_t *img;
 } t_game;
 
@@ -55,6 +49,7 @@ typedef struct s_player_map
 	t_walls	*walls;
 } t_player_map;
 
+// WKANNOUF
 void	update(t_game *game, t_player_map *player);
 void	check_key_moves(void *param);
 void	check_fleche_key(void *arg);
