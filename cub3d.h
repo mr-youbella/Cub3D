@@ -28,8 +28,8 @@ typedef struct	s_map_data
 	char	*so_img;
 	char	*we_img;
 	char	*ea_img;
-	char	*f_color;
-	char	*c_color;
+	size_t 	f_color;
+	size_t 	c_color;
 }	t_map_data;
 
 
@@ -50,30 +50,30 @@ typedef struct	s_walls
 } t_walls;
 
 
-typedef struct s_player_map
+typedef struct s_data
 {
-	char	**map;
-	float	pos_x;
-	float	pos_y;
-	float	plane_x;
-	float	plane_y;
-	float	dir_x;
-	float	dir_y;
-	t_game	*game;
-	t_walls	*walls;
-} t_player_map;
+	float		pos_x;
+	float		pos_y;
+	float		plane_x;
+	float		plane_y;
+	float		dir_x;
+	float		dir_y;
+	t_game		*game;
+	t_walls		*walls;
+	t_map_data	*map_data;
+} t_data;
 
 // WKANNOUF
-void	update(t_game *game, t_player_map *player);
+void	update(t_game *game, t_data *player);
 void	check_key_moves(void *param);
 void	check_fleche_key(void *arg);
 void	destroy(void *arg);
 void	close_window(void *arg);
 
 // YOUBELLA
-void		player_position(t_player_map *player);
+void		player_position(t_data *player);
 t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
-void		image_wall(t_game *game, t_player_map *player, t_walls *walls);
+void		image_wall(t_game *game, t_data *player, t_walls *walls);
 
 #endif

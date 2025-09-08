@@ -6,7 +6,7 @@
 #    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/08 12:15:38 by youbella         ###   ########.fr        #
+#    Updated: 2025/09/08 16:16:53 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,5 +36,6 @@ fclean: clean
 		rm -f $(NAME)
 
 re: fclean all
+		@make re -C libft
 
 .PHONY: clean

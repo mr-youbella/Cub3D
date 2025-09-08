@@ -6,13 +6,13 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/06 17:26:26 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:09:46 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	image_wall(t_game *game, t_player_map *player, t_walls *walls)
+void	image_wall(t_game *game, t_data *player, t_walls *walls)
 {
 	mlx_texture_t	*texture;
 	float			perp_w_dist;

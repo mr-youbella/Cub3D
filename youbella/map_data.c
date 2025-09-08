@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/08 12:20:06 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:07:12 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 short	get_identifiers(int fd, char **line, t_map_data *map_data)
 {
-	short	i;
+	size_t	i;
+	size_t	j;
 	char	*identifier;
 	char	**split;
+	char	*f_color;
+	char	*c_color;
+	int		rgba[3];
 
 	identifier = malloc(7);
 	ft_strlcpy(identifier, "NSWEFC", 8);
@@ -72,7 +76,7 @@ short	get_identifiers(int fd, char **line, t_map_data *map_data)
 		{
 			if (!ft_strncmp(*line, "F ", 2) || !ft_strncmp(*line, "F\n", 2))
 			{
-				map_data->f_color = ft_strdup(*line);
+				f_color = ft_strdup(*line);
 				identifier[4] = 'X';
 			}
 			else
@@ -82,7 +86,7 @@ short	get_identifiers(int fd, char **line, t_map_data *map_data)
 		{
 			if (!ft_strncmp(*line, "C ", 2) || !ft_strncmp(*line, "C\n", 2))
 			{
-				map_data->c_color = ft_strdup(*line);
+				c_color = ft_strdup(*line);
 				identifier[5] = 'X';
 			}
 			else
@@ -138,24 +142,24 @@ short	get_identifiers(int fd, char **line, t_map_data *map_data)
 		return (0);
 	}
 	i = 1;
-	while (map_data->f_color[i] == ' ' || map_data->f_color[i] == '\t')
+	while (f_color[i] == ' ' || f_color[i] == '\t')
 		i++;
-	map_data->f_color = ft_substr(map_data->f_color, i, ft_strlen(map_data->f_color) - i - 1);
-	if (!ft_strlen(map_data->f_color))
+	f_color = ft_substr(f_color, i, ft_strlen(f_color) - i - 1);
+	if (!ft_strlen(f_color))
 	{
 		ft_putstr_fd("Wrong name in F color\n", 2);
 		return (0);
 	}
 	i = 1;
-	while (map_data->c_color[i] == ' ' || map_data->c_color[i] == '\t')
+	while (c_color[i] == ' ' || c_color[i] == '\t')
 		i++;
-	map_data->c_color = ft_substr(map_data->c_color, i, ft_strlen(map_data->c_color) - i - 1);
-	if (!ft_strlen(map_data->c_color))
+	c_color = ft_substr(c_color, i, ft_strlen(c_color) - i - 1);
+	if (!ft_strlen(c_color))
 	{
 		ft_putstr_fd("Wrong name in C color\n", 2);
 		return (0);
 	}
-	split = ft_split(map_data->f_color, ',');
+	split = ft_split(f_color, ',');
 	if (!split)
 	{
 		ft_putstr_fd("Color F no found\n", 2);
@@ -163,13 +167,32 @@ short	get_identifiers(int fd, char **line, t_map_data *map_data)
 	}
 	i = 0;
 	while (split[i])
-		i++;
-	if (i != 3)
 	{
-		ft_putstr_fd("Syntax error in color\n", 2);
-		return (0);
+		if (i == 3)
+		{
+			ft_putstr_fd("Syntax error in color\n", 2);
+			return (0);
+		}
+		j = 0;
+		while (split[i][j])
+		{
+			if (!(split[i][j] >= '0' && split[i][j] <= '9'))
+			{
+				ft_putstr_fd("Syntax error in color\n", 2);
+				return (0);
+			}
+			j++;
+		}
+		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
+		{
+			ft_putstr_fd("Syntax error in color\n", 2);
+			return (0);
+		}
+		rgba[i] = ft_atoi(split[i]);
+		i++;
 	}
-	split = ft_split(map_data->c_color, ',');
+	map_data->f_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
+	split = ft_split(c_color, ',');
 	if (!split)
 	{
 		ft_putstr_fd("Color C no found\n", 2);
@@ -177,12 +200,31 @@ short	get_identifiers(int fd, char **line, t_map_data *map_data)
 	}
 	i = 0;
 	while (split[i])
-		i++;
-	if (i != 3)
 	{
-		ft_putstr_fd("Syntax error in color\n", 2);
-		return (0);
+		if (i == 3)
+		{
+			ft_putstr_fd("Syntax error in color\n", 2);
+			return (0);
+		}
+		j = 0;
+		while (split[i][j])
+		{
+			if (!(split[i][j] >= '0' && split[i][j] <= '9'))
+			{
+				ft_putstr_fd("Syntax error in color\n", 2);
+				return (0);
+			}
+			j++;
+		}
+		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
+		{
+			ft_putstr_fd("Syntax error in color\n", 2);
+			return (0);
+		}
+		rgba[i] = ft_atoi(split[i]);
+		i++;
 	}
+	map_data->c_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
 	return (1);
 }
 
