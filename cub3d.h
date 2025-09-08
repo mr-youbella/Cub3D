@@ -11,6 +11,28 @@
 #include "libft/libft.h"
 #include "MLX42.h"
 
+typedef struct s_game
+{
+	void *window;
+	mlx_t *init;
+	int map_x;
+	int map_y;
+	mlx_image_t *img;
+} t_game;
+
+// YOUBELLA
+typedef struct	s_map_data
+{
+	char	**map;
+	char	*no_img;
+	char	*so_img;
+	char	*we_img;
+	char	*ea_img;
+	char	*f_color;
+	char	*c_color;
+}	t_map_data;
+
+
 typedef struct	s_walls
 {
 	short			side;
@@ -27,14 +49,6 @@ typedef struct	s_walls
 	mlx_texture_t	*ea_img;
 } t_walls;
 
-typedef struct s_game
-{
-	void *window;
-	mlx_t *init;
-	int map_x;
-	int map_y;
-	mlx_image_t *img;
-} t_game;
 
 typedef struct s_player_map
 {
@@ -57,9 +71,9 @@ void	destroy(void *arg);
 void	close_window(void *arg);
 
 // YOUBELLA
-void	player_position(t_player_map *player);
-char	**get_map(char *path);
-char	*get_next_line(int fd);
-void	image_wall(t_game *game, t_player_map *player, t_walls *walls);
+void		player_position(t_player_map *player);
+t_map_data	*ft_map_data(char *path);
+char		*get_next_line(int fd);
+void		image_wall(t_game *game, t_player_map *player, t_walls *walls);
 
 #endif

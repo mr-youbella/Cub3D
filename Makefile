@@ -6,7 +6,7 @@
 #    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/06 22:03:54 by youbella         ###   ########.fr        #
+#    Updated: 2025/09/08 12:15:38 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math -fsanitize=address -g
 NAME = cub3D
 
 SRCS = cub3d.c handle_distroy.c key_alph.c rotation_key.c update_Player.c \
-		youbella/walls.c youbella/parse_player.c youbella/get_next_line.c youbella/map.c
+		youbella/walls.c youbella/parse_player.c youbella/get_next_line.c youbella/map_data.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
