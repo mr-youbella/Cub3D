@@ -6,7 +6,7 @@
 #    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/09 16:03:55 by youbella         ###   ########.fr        #
+#    Updated: 2025/09/09 16:30:33 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ $(NAME_BNS): $(OBJS_BNS)
 			@make -C libft
 			$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a -o $(NAME_BNS)
 
-%.o: %.c cub3d.h
+mandatory/%.o: mandatory/%.c mandatory/cub3d.h bonus/cub3d_bonus.h
+	$(CC) $(FLAGS) -c $< -o $@
+bonus/%.o: bonus/%.c bonus/cub3d_bonus.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

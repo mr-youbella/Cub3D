@@ -6,13 +6,13 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/09 16:05:54 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/09 19:00:50 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-void	image_wall(t_game *game, t_data *player, t_walls *walls, short is_door)
+void	image_wall(t_game *game, t_data *data, t_walls *walls, short is_door)
 {
 	mlx_texture_t	*texture;
 	float			perp_w_dist;
@@ -31,9 +31,9 @@ void	image_wall(t_game *game, t_data *player, t_walls *walls, short is_door)
 	size_t			b;
 	size_t			a;
 
-	perp_w_dist = 0;
+	perp_w_dist = 0; 
 	if (is_door)
-		texture = walls->ea_img;
+		texture = walls->door;
 	else if (walls->side == 0)
 	{
 		if (walls->step_x == -1)
@@ -49,10 +49,10 @@ void	image_wall(t_game *game, t_data *player, t_walls *walls, short is_door)
 			texture = walls->so_img;
 	}
 	if (walls->side == 0 && walls->ray_dir_x != 0)
-		perp_w_dist = (walls->map_x - player->pos_x
+		perp_w_dist = (walls->map_x - data->pos_x
 				+ (1 - walls->step_x) / 2) / walls->ray_dir_x;
 	else if (walls->side == 1 && walls->ray_dir_y != 0)
-		perp_w_dist = (walls->map_y - player->pos_y
+		perp_w_dist = (walls->map_y - data->pos_y
 				+ (1 - walls->step_y) / 2) / walls->ray_dir_y;
 	l_height = (int)(HEIGHT / perp_w_dist);
 	draw_start = -l_height / 2 + HEIGHT / 2;
@@ -63,9 +63,9 @@ void	image_wall(t_game *game, t_data *player, t_walls *walls, short is_door)
 		draw_end = HEIGHT - 1;
 	start = draw_start;
 	if (walls->side == 0)
-		wall_x = player->pos_y + perp_w_dist * walls->ray_dir_y;
+		wall_x = data->pos_y + perp_w_dist * walls->ray_dir_y;
 	else
-		wall_x = player->pos_x + perp_w_dist * walls->ray_dir_x;
+		wall_x = data->pos_x + perp_w_dist * walls->ray_dir_x;
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (float)texture->width);
 	if ((walls->side == 0 && walls->ray_dir_x > 0)

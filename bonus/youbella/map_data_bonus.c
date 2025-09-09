@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/09 16:06:06 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/09 18:22:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,7 @@ short	is_valid_map(char **map, size_t i, size_t j)
 {
 	static int	identifier_count;
 
-	if (!(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' '))
+	if (!(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ' || map[i][j] == 'D'))
 		return (0);
 	if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == '0')
 	{
@@ -403,20 +403,20 @@ t_map_data	*ft_map_data(char *path)
 		}
 		i++;
 	}
-	// i = 0;
-	// while (map_data->map[i])
-	// {
-	// 	j = 0;
-	// 	while (map_data->map[i][j])
-	// 	{
-	// 		if (!is_valid_map(map_data->map, i, j))
-	// 		{
-	// 			ft_putstr_fd("Invalid Map\n", 2);
-	// 			return (NULL);
-	// 		}
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+	i = 0;
+	while (map_data->map[i])
+	{
+		j = 0;
+		while (map_data->map[i][j])
+		{
+			if (!is_valid_map(map_data->map, i, j))
+			{
+				ft_putstr_fd("Invalid Map\n", 2);
+				return (NULL);
+			}
+			j++;
+		}
+		i++;
+	}
 	return (map_data);
 }

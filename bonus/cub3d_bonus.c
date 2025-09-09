@@ -6,6 +6,7 @@ int	main(int argc, char **argv)
 	t_walls		*walls;
 	t_data		*data;
 	t_map_data	*map_data;
+	t_door		*door;
 
 	if (argc != 2)
 		return (1);
@@ -21,6 +22,10 @@ int	main(int argc, char **argv)
 	if (!data)
 		return (1);
 	ft_memset(data, 0, sizeof(t_data));
+	door = malloc(sizeof(t_door));
+	if (!door)
+		return (1);
+	ft_memset(door, 0, sizeof(t_door));
 	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", true);
 	if (!game->init)
 		return (1);
@@ -32,6 +37,7 @@ int	main(int argc, char **argv)
 	data->game = game;
 	data->walls = walls;
 	data->map_data = map_data;
+	data->door = door;
 	player_position(data);
 	walls->no_img = mlx_load_png(map_data->no_img);
 	if (!walls->no_img)
@@ -44,6 +50,12 @@ int	main(int argc, char **argv)
 		return (1);
 	walls->ea_img = mlx_load_png(map_data->ea_img);
 	if (!walls->ea_img)
+		return (1);
+	walls->door = mlx_load_png("door.png");
+	if (!walls->door)
+		return (1);
+	walls->knife = mlx_load_png("knife.png");
+	if (!walls->knife)
 		return (1);
 	update(game, data);
 	mlx_loop_hook(game->init, check_fleche_key, data);

@@ -46,7 +46,17 @@ typedef struct	s_walls
 	mlx_texture_t	*so_img;
 	mlx_texture_t	*we_img;
 	mlx_texture_t	*ea_img;
+	mlx_texture_t	*door;
+	mlx_texture_t	*knife;
 } t_walls;
+
+typedef struct s_door
+{
+	float	pos_y;
+	float	pos_x;
+	float	open_ratio;
+	short	is_open;
+} t_door;
 
 typedef struct s_data
 {
@@ -59,6 +69,7 @@ typedef struct s_data
 	t_game		*game;
 	t_walls		*walls;
 	t_map_data	*map_data;
+	t_door	*door;
 } t_data;
 
 // WKANNOUF
