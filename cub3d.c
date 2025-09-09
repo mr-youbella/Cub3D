@@ -38,8 +38,8 @@ int	main(int argc, char **argv)
 	walls->we_img = mlx_load_png(map_data->we_img);
 	walls->ea_img = mlx_load_png(map_data->ea_img);
 	update(game, data);
-	mlx_loop_hook(game->init, check_key_moves, data);
 	mlx_loop_hook(game->init, check_fleche_key, data);
+	mlx_loop_hook(game->init, check_key_moves, data);
 	mlx_loop_hook(game->init, destroy, game);
 	mlx_close_hook(game->init, close_window, game);
 	mlx_loop(game->init);
