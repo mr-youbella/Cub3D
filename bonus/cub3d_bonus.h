@@ -8,8 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "libft/libft.h"
-#include "MLX42.h"
+#include "../libft/libft.h"
+#include "../MLX42.h"
 
 typedef struct s_game
 {
@@ -72,6 +72,6 @@ void	close_window(void *arg);
 void		player_position(t_data *player);
 t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
-void		image_wall(t_game *game, t_data *player, t_walls *walls);
+void		image_wall(t_game *game, t_data *player, t_walls *walls, short is_door);
 
 #endif

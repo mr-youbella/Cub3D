@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/09 11:51:19 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:44:14 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -341,6 +341,8 @@ t_map_data	*ft_map_data(char *path)
 	size_t		len_row;
 	char		*new_row;
 
+	if (ft_strncmp(path + (ft_strlen(path) - 4), ".cub", 4))
+		return (NULL);
 	join_line = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
