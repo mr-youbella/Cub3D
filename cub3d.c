@@ -34,9 +34,17 @@ int	main(int argc, char **argv)
 	data->map_data = map_data;
 	player_position(data);
 	walls->no_img = mlx_load_png(map_data->no_img);
+	if (!walls->no_img)
+		return (1);
 	walls->so_img = mlx_load_png(map_data->so_img);
+	if (!walls->so_img)
+		return (1);
 	walls->we_img = mlx_load_png(map_data->we_img);
+	if (!walls->we_img)
+		return (1);
 	walls->ea_img = mlx_load_png(map_data->ea_img);
+	if (!walls->ea_img)
+		return (1);
 	update(game, data);
 	mlx_loop_hook(game->init, check_fleche_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);
