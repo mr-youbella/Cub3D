@@ -46,17 +46,25 @@ typedef struct	s_walls
 	mlx_texture_t	*so_img;
 	mlx_texture_t	*we_img;
 	mlx_texture_t	*ea_img;
-	mlx_texture_t	*door;
-	mlx_texture_t	*knife;
-} t_walls;
+}	t_walls;
+
+typedef struct	s_dragons
+{
+	mlx_texture_t	*dragon1;
+	mlx_texture_t	*dragon2;
+	mlx_texture_t	*dragon3;
+	int				current_frame;
+	int				frame_counter;
+	int				frame_speed;
+}	t_dragons;
 
 typedef struct s_door
 {
-	float	pos_y;
-	float	pos_x;
-	float	open_ratio;
-	short	is_open;
-} t_door;
+	float			pos_y;
+	float			pos_x;
+	short			is_open;
+	mlx_texture_t	*door;
+}	t_door;
 
 typedef struct s_data
 {
@@ -69,8 +77,9 @@ typedef struct s_data
 	t_game		*game;
 	t_walls		*walls;
 	t_map_data	*map_data;
-	t_door	*door;
-} t_data;
+	t_door		*door;
+	t_dragons	*dragons;
+}	t_data;
 
 // WKANNOUF
 void	update(t_game *game, t_data *player);
@@ -84,5 +93,7 @@ void		player_position(t_data *player);
 t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
 void		image_wall(t_game *game, t_data *player, t_walls *walls, short is_door);
+void		draw_dragons(t_game *game, t_dragons *dragons);
+void		key_door(t_data *data);
 
 #endif

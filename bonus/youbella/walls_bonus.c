@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/09 19:00:50 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:04:45 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	image_wall(t_game *game, t_data *data, t_walls *walls, short is_door)
 
 	perp_w_dist = 0; 
 	if (is_door)
-		texture = walls->door;
+		texture = data->door->door;
 	else if (walls->side == 0)
 	{
 		if (walls->step_x == -1)

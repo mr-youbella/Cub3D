@@ -69,7 +69,7 @@ void	update(t_game *game, t_data *data)
 			if (data->map_data->map[data->walls->map_y][data->walls->map_x] == '1')
 				wall = 49;
 		}
-		image_wall(game, data, data->walls);
+		image_wall(data, data->walls);
 		data->walls->columns++;
 	}
 }

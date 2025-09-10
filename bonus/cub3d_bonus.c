@@ -7,6 +7,7 @@ int	main(int argc, char **argv)
 	t_data		*data;
 	t_map_data	*map_data;
 	t_door		*door;
+	t_dragons	*dragons;
 
 	if (argc != 2)
 		return (1);
@@ -26,6 +27,10 @@ int	main(int argc, char **argv)
 	if (!door)
 		return (1);
 	ft_memset(door, 0, sizeof(t_door));
+	dragons = malloc(sizeof(t_dragons));
+	if (!dragons)
+		return (1);
+	ft_memset(dragons, 0, sizeof(t_dragons));
 	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", true);
 	if (!game->init)
 		return (1);
@@ -38,6 +43,7 @@ int	main(int argc, char **argv)
 	data->walls = walls;
 	data->map_data = map_data;
 	data->door = door;
+	data->dragons = dragons;
 	player_position(data);
 	walls->no_img = mlx_load_png(map_data->no_img);
 	if (!walls->no_img)
@@ -51,12 +57,19 @@ int	main(int argc, char **argv)
 	walls->ea_img = mlx_load_png(map_data->ea_img);
 	if (!walls->ea_img)
 		return (1);
-	walls->door = mlx_load_png("door.png");
-	if (!walls->door)
+	door->door = mlx_load_png("door.png");
+	if (!door->door)
 		return (1);
-	walls->knife = mlx_load_png("knife.png");
-	if (!walls->knife)
+	dragons->dragon1 = mlx_load_png("dragon1.png");
+	if (!dragons->dragon1)
 		return (1);
+	dragons->dragon2 = mlx_load_png("dragon2.png");
+	if (!dragons->dragon2)
+		return (1);
+	dragons->dragon3 = mlx_load_png("dragon3.png");
+	if (!dragons->dragon3)
+		return (1);
+	dragons->frame_speed = 20;
 	update(game, data);
 	mlx_loop_hook(game->init, check_fleche_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);

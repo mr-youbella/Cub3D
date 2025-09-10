@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
+/*   Updated: 2025/09/09 20:29:18 by youbella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	main(int argc, char **argv)
@@ -21,7 +33,7 @@ int	main(int argc, char **argv)
 	if (!data)
 		return (1);
 	ft_memset(data, 0, sizeof(t_data));
-	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", true);
+	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", false);
 	if (!game->init)
 		return (1);
 	game->img = mlx_new_image(game->init, WIDTH, HEIGHT);

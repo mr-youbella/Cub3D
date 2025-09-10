@@ -1,29 +1,5 @@
 #include "cub3d_bonus.h"
 
-void draw_knife(t_game *game, t_walls *walls)
-{
-    int x, y;
-    for (y = 0; y < (int)walls->knife->height; y++)
-    {
-        for (x = 0; x < (int)walls->knife->width; x++)
-        {
-            int index = (y * walls->knife->width + x) * 4;
-            size_t r = walls->knife->pixels[index + 0];
-            size_t g = walls->knife->pixels[index + 1];
-            size_t b = walls->knife->pixels[index + 2];
-            size_t a = walls->knife->pixels[index + 3];
-
-            if (a > 0)
-            {
-                size_t color = (r << 24) | (g << 16) | (b << 8) | a;
-                mlx_put_pixel(game->img, WIDTH/2 - walls->knife->width/2 + x,
-                                           HEIGHT - walls->knife->height + y,
-                                           color);
-            }
-        }
-    }
-}
-
 void	update(t_game *game, t_data *data)
 {
 	data->walls->columns = 0;
@@ -101,5 +77,11 @@ void	update(t_game *game, t_data *data)
 			image_wall(game, data, data->walls, 1);
 		data->walls->columns++;
 	}
-	draw_knife(game, data->walls);
+	data->dragons->frame_counter++;
+	if (data->dragons->frame_counter >= data->dragons->frame_speed)
+	{
+	    data->dragons->frame_counter = 0;
+	    data->dragons->current_frame = (data->dragons->current_frame + 1) % 3;
+	}
+	draw_dragons(game, data->dragons);
 }
