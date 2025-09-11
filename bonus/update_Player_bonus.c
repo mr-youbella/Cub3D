@@ -1,13 +1,13 @@
 #include "cub3d_bonus.h"
 
-void	update(t_game *game, t_data *data)
+void update(t_game *game, t_data *data)
 {
 	data->walls->columns = 0;
 	float camera_x;
 	float side_dist_x, side_dist_y;
 	float delta_dist_x, delta_dist_y;
 	int wall;
-
+	float			draw_start;
 	while (data->walls->columns < WIDTH)
 	{
 		int y = 0;
@@ -71,6 +71,18 @@ void	update(t_game *game, t_data *data)
 			else if (data->map_data->map[data->walls->map_y][data->walls->map_x] == 'D')
 				wall = 'D';
 		}
+		if (data->walls->side == 0 && data->walls->ray_dir_x != 0)
+			data->walls->perp_w_dist = (data->walls->map_x - data->pos_x + (1 - data->walls->step_x) / 2) / data->walls->ray_dir_x;
+		else if (data->walls->side == 1 && data->walls->ray_dir_y != 0)
+			data->walls->perp_w_dist = (data->walls->map_y - data->pos_y + (1 - data->walls->step_y) / 2) / data->walls->ray_dir_y;
+		data->walls->l_height = (int)(HEIGHT / data->walls->perp_w_dist);
+		draw_start = -data->walls->l_height / 2 + HEIGHT / 2;
+		if (draw_start < 0)
+			draw_start = 0;
+		data->walls->draw_end = (data->walls->l_height / 2) + (HEIGHT / 2);
+		if (data->walls->draw_end >= HEIGHT)
+			data->walls->draw_end = HEIGHT - 1;
+		data->walls->start = draw_start;
 		if (wall == 49)
 			image_wall(game, data, data->walls, 0);
 		else if (wall == 'D')
@@ -78,4 +90,5 @@ void	update(t_game *game, t_data *data)
 		data->walls->columns++;
 	}
 	draw_dragons(game, data->dragons);
+	draw_map(data);
 }

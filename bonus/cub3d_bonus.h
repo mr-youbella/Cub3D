@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 02:55:39 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 07:03:11 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ typedef struct	s_walls
 	short			map_x;
 	short			map_y;
 	int				columns;
+	int				start;
+	int				l_height;
 	float			ray_dir_x;
 	float			ray_dir_y;
+	float			draw_end;
+	float			perp_w_dist;
 	mlx_texture_t	*no_img;
 	mlx_texture_t	*so_img;
 	mlx_texture_t	*we_img;
@@ -93,6 +97,7 @@ typedef struct s_data
 	float		plane_y;
 	float		dir_x;
 	float		dir_y;
+	int			wall;
 	t_game		*game;
 	t_walls		*walls;
 	t_map_data	*map_data;
@@ -107,6 +112,7 @@ void	rotate_key(void *arg);
 void	destroy(void *arg);
 void	close_window(void *arg);
 void	rotate_mouse(void *arg);
+void	draw_map(t_data *data);
 
 // YOUBELLA
 void		player_position(t_data *player);
