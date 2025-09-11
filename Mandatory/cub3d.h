@@ -1,38 +1,59 @@
-#ifndef CUB3D_H
-#define CUB3D_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
+/*   Updated: 2025/09/11 12:20:45 by wkannouf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define WIDTH 1024
-#define HEIGHT 640
-#include <math.h>
-#include <libc.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../libft/libft.h"
-#include "../MLX42.h"
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# define WIDTH 1024
+# define HEIGHT 640
+# include <math.h>
+# include <libc.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include "../libft/libft.h"
+# include "../MLX42.h"
 
 typedef struct s_game
 {
-	void *window;
-	mlx_t *init;
-	int map_x;
-	int map_y;
-	mlx_image_t *img;
-} t_game;
+	mlx_t		*init;
+	int			map_x;
+	int			map_y;
+	mlx_image_t	*img;
+}	t_game;
 
+typedef struct s_donnee
+{
+	float		new_pos_x;
+	float		new_pos_y;
+	float		side_dist_x;
+	float		side_dist_y;
+	float		delta_dist_x;
+	float		delta_dist_y;
+	int			wall;
+}	t_donnee;
 // YOUBELLA
-typedef struct	s_map_data
+typedef struct s_map_data
 {
 	char	**map;
 	char	*no_img;
 	char	*so_img;
 	char	*we_img;
 	char	*ea_img;
-	size_t 	f_color;
-	size_t 	c_color;
+	size_t	f_color;
+	size_t	c_color;
 }	t_map_data;
 
-typedef struct	s_walls
+typedef struct s_walls
 {
 	short			side;
 	short			step_x;
@@ -46,7 +67,7 @@ typedef struct	s_walls
 	mlx_texture_t	*so_img;
 	mlx_texture_t	*we_img;
 	mlx_texture_t	*ea_img;
-} t_walls;
+}	t_walls;
 
 typedef struct s_data
 {
@@ -59,19 +80,20 @@ typedef struct s_data
 	t_game		*game;
 	t_walls		*walls;
 	t_map_data	*map_data;
-} t_data;
+	t_donnee	*donne;
+}	t_data;
 
 // WKANNOUF
-void	update(t_game *game, t_data *player);
-void	check_key_moves(void *param);
-void	check_fleche_key(void *arg);
-void	destroy(void *arg);
-void	close_window(void *arg);
+void		update(t_data *player);
+void		check_key_moves(void *param);
+void		check_fleche_key(void *arg);
+void		destroy(void *arg);
+void		close_window(void *arg);
 
 // YOUBELLA
 void		player_position(t_data *player);
-t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
 void		image_wall(t_data *player, t_walls *walls);
+t_map_data	*ft_map_data(char *path);
 
 #endif
