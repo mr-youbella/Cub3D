@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 14:22:26 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 17:07:07 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_game
 	int			ex_pos_mouse_x;
 	short		flag_key_m;
 	mlx_image_t	*img;
+	size_t		color;
 } t_game;
 
 typedef struct s_donnee
@@ -43,6 +44,8 @@ typedef struct s_donnee
 	float		side_dist_y;
 	float		delta_dist_x;
 	float		delta_dist_y;
+	int 		draw_x;
+	int 		draw_y;
 	int			wall;
 }	t_donnee;
 
@@ -135,7 +138,7 @@ typedef struct s_data
 }	t_data;
 
 // WKANNOUF
-void	update(t_game *game, t_data *player);
+void	update(t_data *data);
 void	check_key_moves(void *param);
 void	rotate_key(void *arg);
 void	destroy(void *arg);
@@ -143,6 +146,7 @@ void	close_window(void *arg);
 void	rotate_mouse(void *arg);
 void	draw_map(t_data *data);
 short	is_blocked(t_data *data, float x, float y);
+void	draw_floor_sky(t_data *data);
 
 // YOUBELLA
 void		player_position(t_data *player);

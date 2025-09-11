@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 13:18:02 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:36:24 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 		return (1);
 	dragons->frame_speed = 20;
 	dragons->height_dragon = 100;
-	update(game, data);
+	update(data);
 	mlx_loop_hook(game->init, rotate_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);
 	mlx_mouse_hook(game->init, key_knife, data);

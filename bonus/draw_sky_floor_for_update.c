@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_distroy_bonus.c                             :+:      :+:    :+:   */
+/*   draw_sky_floor_for_update.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 15:25:09 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 15:25:10 by wkannouf         ###   ########.fr       */
+/*   Created: 2025/09/11 17:06:35 by wkannouf          #+#    #+#             */
+/*   Updated: 2025/09/11 17:06:58 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	destroy(void *arg)
+void	draw_floor_sky(t_data *data)
 {
-	t_game	*game;
+	int	y;
 
-	game = (t_game *)arg;
-	if (mlx_is_key_down(game->init, MLX_KEY_ESCAPE))
+	data->walls->columns = 0;
+	while (data->walls->columns < WIDTH)
 	{
-		printf ("THANK YOU FOR PLAYING IN OUR GAME :)");
-		mlx_close_window(game->init);
+		y = 0;
+		while (y < HEIGHT / 2)
+			mlx_put_pixel(data->game->img, data->walls->columns,
+				y++, data->map_data->c_color);
+		while (y < HEIGHT)
+			mlx_put_pixel(data->game->img, data->walls->columns,
+				y++, data->map_data->f_color);
+		data->walls->columns++;
 	}
-}
-
-void	close_window(void *arg)
-{
-	t_game	*game;
-
-	game = (t_game *)arg;
-	printf ("THANK YOU FOR PLAYING IN OUR GAME :)");
-	mlx_close_window(game->init);
 }

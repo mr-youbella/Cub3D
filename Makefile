@@ -6,7 +6,7 @@
 #    By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/11 14:21:18 by wkannouf         ###   ########.fr        #
+#    Updated: 2025/09/11 17:07:26 by wkannouf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = mandatory/cub3d.c mandatory/handle_distroy.c mandatory/key_moves.c mandat
 		mandatory/youbella/walls.c mandatory/youbella/parse_player.c mandatory/youbella/get_next_line.c mandatory/youbella/map_data.c
 SRCS_BNS = bonus/cub3d_bonus.c bonus/handle_distroy_bonus.c bonus/key_moves_bonus.c bonus/rotation_key_bonus.c bonus/update_Player_bonus.c \
 		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/get_next_line_bonus.c bonus/youbella/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c bonus/youbella/draw_knife_hand_bonus.c\
-		bonus/rotation_mouse_bonus.c bonus/map.c bonus/check_wall_door.c
+		bonus/rotation_mouse_bonus.c bonus/draw_mini_map.c bonus/check_wall_door.c bonus/draw_sky_floor_for_update.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BNS = $(SRCS_BNS:.c=.o)
