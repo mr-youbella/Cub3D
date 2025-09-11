@@ -6,7 +6,7 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 11:13:26 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:02:36 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ typedef struct s_game
 	short		flag_key_m;
 	mlx_image_t	*img;
 } t_game;
+
+typedef struct s_donnee
+{
+	float		new_pos_x;
+	float		new_pos_y;
+	float		side_dist_x;
+	float		side_dist_y;
+	float		delta_dist_x;
+	float		delta_dist_y;
+	int			wall;
+}	t_donnee;
 
 // YOUBELLA
 typedef struct	s_map_data
@@ -100,6 +111,7 @@ typedef struct s_data
 	int			wall;
 	t_game		*game;
 	t_walls		*walls;
+	t_donnee	*donnee;
 	t_map_data	*map_data;
 	t_door		*door;
 	t_dragons	*dragons;
