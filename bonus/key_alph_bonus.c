@@ -1,111 +1,125 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_alph_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 13:01:25 by wkannouf          #+#    #+#             */
+/*   Updated: 2025/09/11 13:04:35 by wkannouf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d_bonus.h"
 
-void check_key_moves(void *arg)
+static void	key_w(t_data *data)
 {
-	t_data *data = (t_data *)arg;
-	float new_pos_x;
-	float new_pos_y;
+	data->donnee->new_pos_x = data->pos_x + (data->dir_x * 0.05);
+	data->donnee->new_pos_y = data->pos_y + (data->dir_y * 0.05);
+	if (data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x - 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y + 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1' &&
+		data->map_data->map[(int)(data->pos_y - 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1')
+		data->pos_x = data->donnee->new_pos_x;
+	if (data->map_data->map[(int)(data->donnee->new_pos_y + 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y - 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x - 0.15)] != '1')
+		data->pos_y = data->donnee->new_pos_y;
+}
 
+static void	key_s(t_data *data)
+{
+	data->donnee->new_pos_x = data->pos_x - (data->dir_x * 0.05);
+	data->donnee->new_pos_y = data->pos_y - (data->dir_y * 0.05);
+	if (data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x - 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y + 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1' &&
+		data->map_data->map[(int)(data->pos_y - 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1')
+		data->pos_x = data->donnee->new_pos_x;
+	if (data->map_data->map[(int)(data->donnee->new_pos_y + 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y - 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x - 0.15)] != '1')
+		data->pos_y = data->donnee->new_pos_y;
+}
+
+static void	key_a(t_data *data)
+{
+	data->donnee->new_pos_x = data->pos_x - (data->plane_x * 0.05);
+	data->donnee->new_pos_y = data->pos_y - (data->plane_y * 0.05);
+	if (data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x - 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y + 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1' &&
+		data->map_data->map[(int)(data->pos_y - 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1')
+		data->pos_x = data->donnee->new_pos_x;
+	if (data->map_data->map[(int)(data->donnee->new_pos_y + 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y - 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x - 0.15)] != '1')
+		data->pos_y = data->donnee->new_pos_y;
+}
+
+static void	key_d(t_data *data)
+{
+	data->donnee->new_pos_x = data->pos_x + (data->plane_x * 0.05);
+	data->donnee->new_pos_y = data->pos_y + (data->plane_y * 0.05);
+	if (data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y)]
+		[(int)(data->donnee->new_pos_x - 0.15)] != '1' &&
+		data->map_data->map[(int)(data->pos_y + 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1' &&
+		data->map_data->map[(int)(data->pos_y - 0.15)]
+		[(int)(data->donnee->new_pos_x)] != '1')
+		data->pos_x = data->donnee->new_pos_x;
+	if (data->map_data->map[(int)(data->donnee->new_pos_y + 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y - 0.15)]
+		[(int)(data->pos_x)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x + 0.15)] != '1' &&
+		data->map_data->map[(int)(data->donnee->new_pos_y)]
+		[(int)(data->pos_x - 0.15)] != '1')
+		data->pos_y = data->donnee->new_pos_y;
+}
+
+void	check_key_moves(void *arg)
+{
+	t_data	*data;
+
+	data = (t_data *)arg;
 	if (mlx_is_key_down(data->game->init, MLX_KEY_W))
-	{
-		new_pos_x = data->pos_x + (data->dir_x * 0.05);
-		new_pos_y = data->pos_y + (data->dir_y * 0.05);
-		
-		if ((data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != '1' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != '1')
-			&& (data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != 'D'))
-			data->pos_x = new_pos_x;
-
-		if ((data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != '1')
-			&& (data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != 'D'))
-			data->pos_y = new_pos_y;
-	}
+		key_w(data);
 	else if (mlx_is_key_down(data->game->init, MLX_KEY_S))
-	{
-		new_pos_x = data->pos_x - (data->dir_x * 0.05);
-		new_pos_y = data->pos_y - (data->dir_y * 0.05);
-	
-		if ((data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != '1' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != '1')
-			&& (data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != 'D'))
-			data->pos_x = new_pos_x;
-
-		if ((data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != '1')
-			&& (data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != 'D'))
-			data->pos_y = new_pos_y;
-	}
-	else if (mlx_is_key_down(data->game->init, MLX_KEY_A))
-	{
-		new_pos_x = data->pos_x - (data->plane_x * 0.05);
-		new_pos_y = data->pos_y - (data->plane_y * 0.05);
-
-		if ((data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != '1'&&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != '1' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != '1')
-			&& (data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != 'D'))
-			data->pos_x = new_pos_x;
-
-		if ((data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != '1'&&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != '1')
-			&& (data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != 'D'&&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != 'D'))
-			data->pos_y = new_pos_y;
-	}
+		key_s(data);
 	else if (mlx_is_key_down(data->game->init, MLX_KEY_D))
-	{
-		new_pos_x = data->pos_x + (data->plane_x * 0.05);
-		new_pos_y = data->pos_y + (data->plane_y * 0.05);
-
-		if ((data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != '1' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != '1' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != '1')
-			&& (data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y)][(int)(new_pos_x - 0.15)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y + 0.15)][(int)(new_pos_x)] != 'D' &&
-			data->map_data->map[(int)(data->pos_y - 0.15)][(int)(new_pos_x)] != 'D'))
-			data->pos_x = new_pos_x;
-
-		if ((data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != '1' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != '1')
-			&& (data->map_data->map[(int)(new_pos_y + 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y - 0.15)][(int)(data->pos_x)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x + 0.15)] != 'D' &&
-			data->map_data->map[(int)(new_pos_y)][(int)(data->pos_x - 0.15)] != 'D'))
-			data->pos_y = new_pos_y;
-	}
-	key_door(data);
+		key_d(data);
+	else if (mlx_is_key_down(data->game->init, MLX_KEY_A))
+		key_a(data);
 	update(data->game, data);
 }
