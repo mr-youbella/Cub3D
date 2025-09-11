@@ -77,11 +77,5 @@ void	update(t_game *game, t_data *data)
 			image_wall(game, data, data->walls, 1);
 		data->walls->columns++;
 	}
-	data->dragons->frame_counter++;
-	if (data->dragons->frame_counter >= data->dragons->frame_speed)
-	{
-	    data->dragons->frame_counter = 0;
-	    data->dragons->current_frame = (data->dragons->current_frame + 1) % 3;
-	}
 	draw_dragons(game, data->dragons);
 }

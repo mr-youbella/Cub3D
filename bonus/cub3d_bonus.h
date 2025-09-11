@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
+/*   Updated: 2025/09/11 01:08:56 by youbella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 #define CUB3D_H
 
@@ -53,6 +65,8 @@ typedef struct	s_dragons
 	mlx_texture_t	*dragon1;
 	mlx_texture_t	*dragon2;
 	mlx_texture_t	*dragon3;
+	mlx_texture_t	*knife;
+	short			key_knife;
 	int				current_frame;
 	int				frame_counter;
 	int				frame_speed;

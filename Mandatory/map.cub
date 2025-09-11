@@ -1,10 +1,10 @@
-NO mk1.png
-SO mk2.png
-WE mk3.png
-EA mk4.png
+NO wall1.png
+SO wall2.png
+WE wall3.png
+EA wall4.png
 
-C 92,7,7
-F 33,31,31
+C 8,8,8
+F 92,7,7
 
 
 11111111111111111111111111111111111111111111111111111111111

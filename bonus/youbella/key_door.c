@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:00:35 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 00:00:47 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 01:18:29 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ void	key_door(t_data *data)
 	        data->door->is_open = 0;
 	    }
 	}
+	if (mlx_is_key_down(data->game->init, MLX_KEY_T))
+		data->dragons->key_knife = 1;
 }

@@ -1,7 +1,5 @@
 #include "cub3d_bonus.h"
 
-
-
 void check_key_moves(void *arg)
 {
 	t_data *data = (t_data *)arg;

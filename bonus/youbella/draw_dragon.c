@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:59:06 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 00:27:03 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 01:25:35 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ void draw_dragons(t_game *game, t_dragons *dragons)
 {
     mlx_texture_t *frame;
 
-    frame = mlx_load_png("knife.png");
+    dragons->frame_counter++;
+	if (dragons->frame_counter >= dragons->frame_speed)
+	{
+	    dragons->frame_counter = 0;
+	    dragons->current_frame = (dragons->current_frame + 1) % 3;
+	}
+
+    frame = dragons->knife;
     for (int y = 0; y < (int)frame->height; y++)
     {
         for (int x = 0; x < (int)frame->width; x++)
@@ -30,8 +37,8 @@ void draw_dragons(t_game *game, t_dragons *dragons)
             if (a > 0)
             {
                 size_t color = (r << 24) | (g << 16) | (b << 8) | a;
-                int draw_x = (WIDTH /2 + 400 - frame->width / 2 + x);
-                int draw_y = (HEIGHT / 2 - 100 - frame->height + y);
+                int draw_x = (WIDTH + x - 10);
+                int draw_y = (HEIGHT / 2 - 267+ y);
                 mlx_put_pixel(game->img, draw_x, draw_y, color);
             }
         }
@@ -43,7 +50,6 @@ void draw_dragons(t_game *game, t_dragons *dragons)
         frame = dragons->dragon2;
     else
         frame = dragons->dragon3;
-
     for (int y = 0; y < (int)frame->height; y++)
     {
         for (int x = 0; x < (int)frame->width; x++)

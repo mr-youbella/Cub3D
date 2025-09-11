@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
+/*   Updated: 2025/09/11 00:54:55 by youbella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d_bonus.h"
 
 int	main(int argc, char **argv)
@@ -68,6 +80,9 @@ int	main(int argc, char **argv)
 		return (1);
 	dragons->dragon3 = mlx_load_png("dragon3.png");
 	if (!dragons->dragon3)
+		return (1);
+	dragons->knife = mlx_load_png("knife.png");
+	if (!dragons->knife)
 		return (1);
 	dragons->frame_speed = 20;
 	update(game, data);

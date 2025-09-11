@@ -6,13 +6,14 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/09 20:54:50 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 00:44:00 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 void	put_pixels(float draw_end, mlx_texture_t *texture, int l_height, int tex_x, t_data *data, int start);
+mlx_texture_t	*ft_texture(t_walls *walls);
 
 void	image_wall(t_data *data, t_walls *walls)
 {
