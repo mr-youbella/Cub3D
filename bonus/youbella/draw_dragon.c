@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:59:06 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 02:30:22 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:58:32 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void draw_dragons(t_game *game, t_dragons *dragons)
                     for (int dx = 0; dx < 2; dx++)
                     {
                         int draw_x = (WIDTH /2 + 400 - frame->width / 2 + x) * 2 + dx;
-                        int draw_y = (HEIGHT / 2 - 100 - frame->height + y) * 2 + dy;
+                        int draw_y = (HEIGHT / 2 - dragons->move_dragon - frame->height + y) * 2 + dy;
                         mlx_put_pixel(game->img, draw_x, draw_y, color);
                     }
                 }

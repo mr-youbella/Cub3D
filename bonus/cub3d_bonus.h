@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 02:47:04 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:55:39 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_dragons
 	mlx_texture_t	*dragon3;
 	mlx_texture_t	*hand_knife;
 	mlx_texture_t	*hand;
+	int				move_dragon;
 	short			key_knife;
 	int				current_frame;
 	int				frame_counter;

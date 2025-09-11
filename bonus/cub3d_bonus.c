@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 02:44:33 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:56:13 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main(int argc, char **argv)
 	if (!dragons->hand)
 		return (1);
 	dragons->frame_speed = 20;
+	dragons->move_dragon = 100;
 	update(game, data);
 	mlx_loop_hook(game->init, rotate_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);
