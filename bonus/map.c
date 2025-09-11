@@ -6,7 +6,7 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 03:18:52 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 06:54:24 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 07:17:33 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,12 @@ void draw_map(t_data *data)
 				draw_x = center_x + (res_x * scale_box);
 				draw_y = center_y + (res_y * scale_box);
 				// int wallHeight = (int)(HEIGHT / distanceWall);
-				
-				if (data->map_data->map[y][x] == 'D')
+				if (data->map_data->map[y][x] == '1')
 					mlx_put_pixel(data->game->img, draw_x, draw_y, 0xD42525FF);
+				else if (data->map_data->map[y][x] == 'D')
+					mlx_put_pixel(data->game->img, draw_x, draw_y, 0x0000FFFF);
 				else
-				{
-					mlx_put_pixel(data->game->img, draw_x - 1, draw_y, 0xFF0000FF);
-					mlx_put_pixel(data->game->img, draw_x, draw_y, 0xFF0000FF);
-					mlx_put_pixel(data->game->img, draw_x + 1, draw_y, 0xFF0000FF);
-				}
+					mlx_put_pixel(data->game->img, draw_x, draw_y, 0x000000FF);
 			}
 			x++;
 		}
