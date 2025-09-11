@@ -6,7 +6,7 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 01:53:51 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:02:24 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_game
 	int			pos_mouse_x;
 	int			pos_mouse_y;
 	int			ex_pos_mouse_x;
+	short		flag_key_m;
 	mlx_image_t	*img;
 } t_game;
 

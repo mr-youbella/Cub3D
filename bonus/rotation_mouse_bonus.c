@@ -19,9 +19,11 @@ void rotate_mouse(void *arg)
 	float delta_x;
 
 	t_data *data = (t_data *)arg;
-	if (mlx_is_key_down(data->game->init, MLX_KEY_M))
+	if (data->game->flag_key_m || mlx_is_key_down(data->game->init, MLX_KEY_M))
 	{
+		data->game->flag_key_m = 1;
 		mlx_get_mouse_pos(data->game->init, &data->game->pos_mouse_x, &data->game->pos_mouse_y);
+		// mlx_set_mouse_pos(data->game->init, WIDTH/2, 0);
 		delta_x = data->game->pos_mouse_x - data->game->ex_pos_mouse_x;
 		data->game->ex_pos_mouse_x = data->game->pos_mouse_x;
 		if (delta_x > 0)
