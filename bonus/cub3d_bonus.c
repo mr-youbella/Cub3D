@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 00:54:55 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 01:55:28 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ int	main(int argc, char **argv)
 		return (1);
 	dragons->frame_speed = 20;
 	update(game, data);
-	mlx_loop_hook(game->init, check_fleche_key, data);
+	mlx_loop_hook(game->init, rotate_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);
+	mlx_loop_hook(game->init, rotate_mouse, data);
 	mlx_loop_hook(game->init, destroy, game);
 	mlx_close_hook(game->init, close_window, game);
 	mlx_loop(game->init);

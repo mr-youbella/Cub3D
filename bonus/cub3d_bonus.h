@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 01:08:56 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 01:53:51 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@
 
 typedef struct s_game
 {
-	void *window;
-	mlx_t *init;
-	int map_x;
-	int map_y;
-	mlx_image_t *img;
+	mlx_t		*init;
+	int			map_x;
+	int			map_y;
+	int			pos_mouse_x;
+	int			pos_mouse_y;
+	int			ex_pos_mouse_x;
+	mlx_image_t	*img;
 } t_game;
 
 // YOUBELLA
@@ -98,9 +100,10 @@ typedef struct s_data
 // WKANNOUF
 void	update(t_game *game, t_data *player);
 void	check_key_moves(void *param);
-void	check_fleche_key(void *arg);
+void	rotate_key(void *arg);
 void	destroy(void *arg);
 void	close_window(void *arg);
+void	rotate_mouse(void *arg);
 
 // YOUBELLA
 void		player_position(t_data *player);

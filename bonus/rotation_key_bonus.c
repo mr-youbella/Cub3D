@@ -1,6 +1,6 @@
 #include "cub3d_bonus.h"
 
-void	check_fleche_key(void *arg)
+void	rotate_key(void *arg)
 {
 	t_data *data = (t_data *)arg;
 	float	old_dir_x;
@@ -10,7 +10,7 @@ void	check_fleche_key(void *arg)
 	{
 		old_dir_x = data->dir_x;
 		data->dir_x = data->dir_x * cos(0.05) - data->dir_y * sin(0.05);
-		data->dir_y = old_dir_x * sin (0.05) + data->dir_y * cos(0.05);
+		data->dir_y = old_dir_x * sin(0.05) + data->dir_y * cos(0.05);
 
 		old_plane_x = data->plane_x;
 		data->plane_x = data->plane_x * cos(0.05) - data->plane_y * sin(0.05);
