@@ -6,13 +6,13 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 18:06:32 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:25:23 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	get_pixels(mlx_texture_t *texture, t_data *data, int start, int index)
+void	put_pixels(mlx_texture_t *texture, t_data *data, int start, int index)
 {
 	size_t	r;
 	size_t	g;
@@ -43,7 +43,7 @@ void	get_pixels(mlx_texture_t *texture,
 		d = (start * 256 - HEIGHT * 128 + l_height * 128);
 		tex_y = ((d * texture->height) / l_height) / 256;
 		index = (tex_y * texture->width + data->walls->tex_x) * 4;
-		get_pixels(texture, data, start, index);
+		put_pixels(texture, data, start, index);
 		start++;
 	}
 }

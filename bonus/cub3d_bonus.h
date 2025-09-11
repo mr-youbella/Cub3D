@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 17:07:07 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:25:01 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
-#define WIDTH 1024
-#define HEIGHT 640
-#include <math.h>
-#include <libc.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../libft/libft.h"
-#include "../MLX42.h"
+# include <math.h>
+# include <libc.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include "../libft/libft.h"
+# include "../.MLX42.h"
+
+# define WIDTH 1024
+# define HEIGHT 640
 
 typedef struct s_game
 {
@@ -34,7 +35,7 @@ typedef struct s_game
 	short		flag_key_m;
 	mlx_image_t	*img;
 	size_t		color;
-} t_game;
+}	t_game;
 
 typedef struct s_donnee
 {
@@ -44,26 +45,26 @@ typedef struct s_donnee
 	float		side_dist_y;
 	float		delta_dist_x;
 	float		delta_dist_y;
-	int 		draw_x;
-	int 		draw_y;
+	int			draw_x;
+	int			draw_y;
 	int			wall;
 }	t_donnee;
 
 // YOUBELLA
-typedef struct	s_map_data
+typedef struct s_map_data
 {
 	char	**map;
 	char	*no_img;
 	char	*so_img;
 	char	*we_img;
 	char	*ea_img;
-	char 	*str_f_color;
-	char 	*str_c_color;
-	size_t 	f_color;
-	size_t 	c_color;
+	char	*str_f_color;
+	char	*str_c_color;
+	size_t	f_color;
+	size_t	c_color;
 }	t_map_data;
 
-typedef struct	s_walls
+typedef struct s_walls
 {
 	short			side;
 	short			step_x;
@@ -83,7 +84,7 @@ typedef struct	s_walls
 	mlx_texture_t	*ea_img;
 }	t_walls;
 
-typedef struct	s_dragons
+typedef struct s_dragons
 {
 	mlx_texture_t	*dragon1;
 	mlx_texture_t	*dragon2;
@@ -138,25 +139,29 @@ typedef struct s_data
 }	t_data;
 
 // WKANNOUF
-void	update(t_data *data);
-void	check_key_moves(void *param);
-void	rotate_key(void *arg);
-void	destroy(void *arg);
-void	close_window(void *arg);
-void	rotate_mouse(void *arg);
-void	draw_map(t_data *data);
-short	is_blocked(t_data *data, float x, float y);
-void	draw_floor_sky(t_data *data);
+void		update(t_data *data);
+void		check_key_moves(void *param);
+void		rotate_key(void *arg);
+void		destroy(void *arg);
+void		close_window(void *arg);
+void		rotate_mouse(void *arg);
+void		draw_map(t_data *data);
+short		is_blocked(t_data *data, float x, float y);
+void		draw_floor_sky(t_data *data);
 
 // YOUBELLA
 void		player_position(t_data *player);
 t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
-void		draw_wall_door(t_game *game, t_data *player, t_walls *walls, short is_door);
+void		draw_wall_door(t_game *game, t_data *player,
+				t_walls *walls, short is_door);
 void		draw_dragons(t_game *game, t_dragons *dragons, t_knife *knife);
 void		key_door(t_data *data);
-void		key_knife(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		key_knife(mouse_key_t button, action_t action,
+				modifier_key_t mods, void *param);
 void		draw_hand_knife(t_game *game, t_knife *knife);
-void		draw_wall_door(t_game *game, t_data *data, t_walls *walls, short is_door);
+void		draw_wall_door(t_game *game, t_data *data,
+				t_walls *walls, short is_door);
 void		move_dragon(t_data *data);
+
 #endif

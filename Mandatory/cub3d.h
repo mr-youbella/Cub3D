@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 18:02:19 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:24:44 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include "../libft/libft.h"
-# include "../MLX42.h"
+# include "../.MLX42.h"
 
 typedef struct s_game
 {
