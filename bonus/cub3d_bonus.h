@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 13:24:41 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:15:37 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void	destroy(void *arg);
 void	close_window(void *arg);
 void	rotate_mouse(void *arg);
 void	draw_map(t_data *data);
+short	is_blocked(t_data *data, float x, float y);
 
 // YOUBELLA
 void		player_position(t_data *player);
