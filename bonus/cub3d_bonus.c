@@ -6,7 +6,7 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 04:45:50 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:04:04 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	t_data		*data;
 	t_map_data	*map_data;
 	t_door		*door;
+	t_donnee	*donnee;
 	t_dragons	*dragons;
 
 	if (argc != 2)
@@ -31,6 +32,10 @@ int	main(int argc, char **argv)
 	if (!walls)
 		return (1);
 	ft_memset(walls, 0, sizeof(t_walls));
+	donnee = malloc(sizeof(t_donnee));
+	if (!donnee)
+		return (1);
+	ft_memset(donnee, 0, sizeof(t_donnee));
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (1);
@@ -53,6 +58,7 @@ int	main(int argc, char **argv)
 		return (1);
 	data->game = game;
 	data->walls = walls;
+	data->donnee = donnee;
 	data->map_data = map_data;
 	data->door = door;
 	data->dragons = dragons;
