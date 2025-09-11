@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 12:43:10 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:02:19 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_map_data
 	char	*ea_img;
 	size_t	f_color;
 	size_t	c_color;
+	char	*str_f_color;
+	char	*str_c_color;
 }	t_map_data;
 
 typedef struct s_walls
@@ -68,6 +70,10 @@ typedef struct s_walls
 	mlx_texture_t	*so_img;
 	mlx_texture_t	*we_img;
 	mlx_texture_t	*ea_img;
+	float			perp_w_dist;
+	float			wall_x;
+	float			draw_end;
+	float			tex_x;
 }	t_walls;
 
 typedef struct s_data
@@ -94,7 +100,7 @@ void		close_window(void *arg);
 // YOUBELLA
 void		player_position(t_data *player);
 char		*get_next_line(int fd);
-void		image_wall(t_data *player, t_walls *walls);
+void		draw_wall_door(t_data *data, t_walls *walls);
 t_map_data	*ft_map_data(char *path);
 
 #endif

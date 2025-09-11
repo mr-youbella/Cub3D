@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_Player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:09:15 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 12:12:30 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 17:52:45 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	update(t_data *data)
 			data->donne->delta_dist_y = fabs(1 / data->walls->ray_dir_y);
 		start_dda_and_dir_step_of_ray(data);
 		dda(data);
-		image_wall(data, data->walls);
+		draw_wall_door(data, data->walls);
 		data->walls->columns++;
 	}
 }

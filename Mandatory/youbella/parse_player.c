@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:25:00 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/08 17:22:45 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:06:57 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	player_position(t_data *player)
 		j = 0;
 		while (player->map_data->map[i][j])
 		{
-			if (player->map_data->map[i][j] == 'N' || player->map_data->map[i][j] == 'S'
-				|| player->map_data->map[i][j] == 'E' || player->map_data->map[i][j] == 'W')
+			if (player->map_data->map[i][j] == 'N'
+				|| player->map_data->map[i][j] == 'S'
+				|| player->map_data->map[i][j] == 'E'
+				|| player->map_data->map[i][j] == 'W')
 			{
 				player->pos_x = j + 0.5;
 				player->pos_y = i + 0.5;
