@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 13:04:04 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:18:02 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	t_door		*door;
 	t_donnee	*donnee;
 	t_dragons	*dragons;
+	t_knife		*knife;
 
 	if (argc != 2)
 		return (1);
@@ -48,6 +49,10 @@ int	main(int argc, char **argv)
 	if (!dragons)
 		return (1);
 	ft_memset(dragons, 0, sizeof(t_dragons));
+	knife = malloc(sizeof(t_knife));
+	if (!knife)
+		return (1);
+	ft_memset(knife, 0, sizeof(t_knife));
 	game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", true);
 	if (!game->init)
 		return (1);
@@ -62,6 +67,7 @@ int	main(int argc, char **argv)
 	data->map_data = map_data;
 	data->door = door;
 	data->dragons = dragons;
+	data->knife = knife;
 	player_position(data);
 	walls->no_img = mlx_load_png(map_data->no_img);
 	if (!walls->no_img)
@@ -87,14 +93,14 @@ int	main(int argc, char **argv)
 	dragons->dragon3 = mlx_load_png("dragon3.png");
 	if (!dragons->dragon3)
 		return (1);
-	dragons->hand_knife = mlx_load_png("hand_with_knife.png");
-	if (!dragons->hand_knife)
+	knife->hand_knife = mlx_load_png("hand_with_knife.png");
+	if (!knife->hand_knife)
 		return (1);
-	dragons->hand = mlx_load_png("hand_without_knife.png");
-	if (!dragons->hand)
+	knife->hand = mlx_load_png("hand_without_knife.png");
+	if (!knife->hand)
 		return (1);
 	dragons->frame_speed = 20;
-	dragons->move_dragon = 100;
+	dragons->height_dragon = 100;
 	update(game, data);
 	mlx_loop_hook(game->init, rotate_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 13:02:36 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:13:08 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,13 @@ typedef struct	s_dragons
 	mlx_texture_t	*dragon3;
 	mlx_texture_t	*hand_knife;
 	mlx_texture_t	*hand;
-	int				move_dragon;
+	int				height_dragon;
 	short			key_knife;
 	int				current_frame;
 	int				frame_counter;
 	int				frame_speed;
+	int				x;
+	int				y;
 }	t_dragons;
 
 typedef struct s_door
@@ -99,6 +101,18 @@ typedef struct s_door
 	short			is_open;
 	mlx_texture_t	*door;
 }	t_door;
+
+typedef struct s_knife
+{
+	mlx_texture_t	*hand_knife;
+	mlx_texture_t	*hand;
+	mlx_texture_t	*knife_hand;
+	short			key_knife;
+	int				draw_x;
+	int				draw_y;
+	int				x;
+	int				y;
+}	t_knife;
 
 typedef struct s_data
 {
@@ -115,6 +129,7 @@ typedef struct s_data
 	t_map_data	*map_data;
 	t_door		*door;
 	t_dragons	*dragons;
+	t_knife		*knife;
 }	t_data;
 
 // WKANNOUF
@@ -130,8 +145,10 @@ void	draw_map(t_data *data);
 void		player_position(t_data *player);
 t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
-void		image_wall(t_game *game, t_data *player, t_walls *walls, short is_door);
-void		draw_dragons(t_game *game, t_dragons *dragons);
+void		draw_wall_door(t_game *game, t_data *player, t_walls *walls, short is_door);
+void		draw_dragons(t_game *game, t_dragons *dragons, t_knife *knife);
 void		key_door(t_data *data);
 void		key_knife(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void		draw_hand_knife(t_game *game, t_knife *knife);
+void		draw_wall_door(t_game *game, t_data *data, t_walls *walls, short is_door);
 #endif
