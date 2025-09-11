@@ -84,11 +84,11 @@ void update(t_game *game, t_data *data)
 			data->walls->draw_end = HEIGHT - 1;
 		data->walls->start = draw_start;
 		if (wall == 49)
-			image_wall(game, data, data->walls, 0);
+			draw_wall_door(game, data, data->walls, 0);
 		else if (wall == 'D')
-			image_wall(game, data, data->walls, 1);
+			draw_wall_door(game, data, data->walls, 1);
 		data->walls->columns++;
 	}
-	draw_dragons(game, data->dragons);
+	draw_dragons(game, data->dragons, data->knife);
 	draw_map(data);
 }

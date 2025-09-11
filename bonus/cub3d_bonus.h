@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 13:13:08 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:24:41 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,5 @@ void		key_door(t_data *data);
 void		key_knife(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 void		draw_hand_knife(t_game *game, t_knife *knife);
 void		draw_wall_door(t_game *game, t_data *data, t_walls *walls, short is_door);
+void		move_dragon(t_data *data);
 #endif

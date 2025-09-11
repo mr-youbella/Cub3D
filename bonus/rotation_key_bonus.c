@@ -26,15 +26,6 @@ void	rotate_key(void *arg)
 		data->plane_x = data->plane_x * cos(-0.05) - data->plane_y * sin(-0.05);
 		data->plane_y = old_plane_x * sin(-0.05) + data->plane_y * cos(-0.05);
 	}
-	else if (mlx_is_key_down(data->game->init, MLX_KEY_UP))
-	{
-		if (data->dragons->move_dragon < 200)
-			data->dragons->move_dragon += 5;
-	}
-	else if (mlx_is_key_down(data->game->init, MLX_KEY_DOWN))
-	{
-		if (data->dragons->move_dragon > -10)
-			data->dragons->move_dragon -= 5;
-	}
+	move_dragon(data);
 	update(data->game, data);
 }

@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/09 18:22:06 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 11:45:04 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,8 +290,13 @@ short	is_valid_map(char **map, size_t i, size_t j)
 
 	if (!(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ' || map[i][j] == 'D'))
 		return (0);
-	if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == '0')
+	if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'D' || map[i][j] == '0')
 	{
+		if (map[i][j] == 'D')
+        {
+            if (!((map[i-1][j] == '1' && map[i+1][j] == '1') || (map[i][j-1] == '1' && map[i][j+1] == '1')))
+                return 0;
+        }
 		if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
 			identifier_count++;
 		if (identifier_count > 1)

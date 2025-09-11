@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 12:20:45 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 12:43:10 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_donnee
 	float		delta_dist_y;
 	int			wall;
 }	t_donnee;
+
 // YOUBELLA
 typedef struct s_map_data
 {
