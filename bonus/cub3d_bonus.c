@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 02:13:04 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:44:33 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,17 @@ int	main(int argc, char **argv)
 	dragons->dragon3 = mlx_load_png("dragon3.png");
 	if (!dragons->dragon3)
 		return (1);
-	dragons->knife = mlx_load_png("knife.png");
-	if (!dragons->knife)
+	dragons->hand_knife = mlx_load_png("hand_with_knife.png");
+	if (!dragons->hand_knife)
+		return (1);
+	dragons->hand = mlx_load_png("hand_without_knife.png");
+	if (!dragons->hand)
 		return (1);
 	dragons->frame_speed = 20;
 	update(game, data);
 	mlx_loop_hook(game->init, rotate_key, data);
 	mlx_loop_hook(game->init, check_key_moves, data);
+	mlx_mouse_hook(game->init, key_knife, data);
 	mlx_loop_hook(game->init, rotate_mouse, data);
 	mlx_set_cursor_mode(game->init, MLX_MOUSE_DISABLED);
 	mlx_loop_hook(game->init, destroy, game);

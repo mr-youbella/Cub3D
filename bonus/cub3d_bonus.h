@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 02:02:24 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:47:04 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ typedef struct	s_dragons
 	mlx_texture_t	*dragon1;
 	mlx_texture_t	*dragon2;
 	mlx_texture_t	*dragon3;
-	mlx_texture_t	*knife;
+	mlx_texture_t	*hand_knife;
+	mlx_texture_t	*hand;
 	short			key_knife;
 	int				current_frame;
 	int				frame_counter;
@@ -113,5 +114,5 @@ char		*get_next_line(int fd);
 void		image_wall(t_game *game, t_data *player, t_walls *walls, short is_door);
 void		draw_dragons(t_game *game, t_dragons *dragons);
 void		key_door(t_data *data);
-
+void		key_knife(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 #endif

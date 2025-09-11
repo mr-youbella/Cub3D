@@ -6,11 +6,20 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:00:35 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 01:18:29 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/11 02:46:47 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
+
+void	key_knife(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+{
+	(void)mods;
+    t_data *data = (t_data *)param;
+
+    if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
+        data->dragons->key_knife = !data->dragons->key_knife;
+}
 
 void	key_door(t_data *data)
 {
@@ -55,6 +64,4 @@ void	key_door(t_data *data)
 	        data->door->is_open = 0;
 	    }
 	}
-	if (mlx_is_key_down(data->game->init, MLX_KEY_T))
-		data->dragons->key_knife = 1;
 }
