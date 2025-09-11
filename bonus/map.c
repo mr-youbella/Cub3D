@@ -6,7 +6,7 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 03:18:52 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 10:36:39 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 10:54:00 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void draw_map(t_data *data)
 		x = 0;
 		while (data->map_data->map[y][x])
 		{
-			res_x = x - (int)data->pos_x;
-			res_y = y - (int)data->pos_y;
+			res_x = (x + 0.5) - data->pos_x;
+			res_y = (y + 0.5) - data->pos_y;
 			dist = sqrt(res_x * res_x + res_y * res_y);
 			if (dist * scale_box < demi_rayon)
 			{
