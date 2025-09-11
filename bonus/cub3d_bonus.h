@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 14:15:37 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:22:26 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct	s_map_data
 	char	*so_img;
 	char	*we_img;
 	char	*ea_img;
+	char 	*str_f_color;
+	char 	*str_c_color;
 	size_t 	f_color;
 	size_t 	c_color;
 }	t_map_data;
