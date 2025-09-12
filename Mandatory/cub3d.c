@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 12:38:40 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:09:18 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	free_leaks(t_data *data)
+{
+	free(data->game);
+	free(data->walls);
+	free(data->map_data);
+	free(data->donne);
+	free(data);
+}
 
 static t_data	*alloc_struct(void)
 {
@@ -25,15 +34,15 @@ static t_data	*alloc_struct(void)
 	ft_memset(game, 0, sizeof(t_game));
 	walls = malloc(sizeof(t_walls));
 	if (!walls)
-		return (NULL);
+		return (free(game), NULL);
 	ft_memset(walls, 0, sizeof(t_walls));
 	donnee = malloc(sizeof(t_donnee));
 	if (!donnee)
-		return (NULL);
+		return (free(game), free(walls), NULL);
 	ft_memset(donnee, 0, sizeof(t_donnee));
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (NULL);
+		return (free(game), free(walls), free(donnee), NULL);
 	ft_memset(data, 0, sizeof(t_data));
 	data->game = game;
 	data->walls = walls;
@@ -79,14 +88,14 @@ int	main(int argc, char **argv)
 	if (!data)
 		return (1);
 	if (!init_window(data))
-		return (1);
+		return (free_leaks(data), 1);
 	map_data = ft_map_data(argv[1]);
 	if (!map_data)
-		return (1);
+		return (data->map_data = NULL, free_leaks(data), 1);
 	data->map_data = map_data;
 	player_position(data);
 	if (!set_image(data, map_data))
-		return (1);
+		return (free_leaks(data), 1);
 	update(data);
 	mlx_loop_hook(data->game->init, check_fleche_key, data);
 	mlx_loop_hook(data->game->init, check_key_moves, data);
@@ -94,4 +103,5 @@ int	main(int argc, char **argv)
 	mlx_close_hook(data->game->init, close_window, data->game);
 	mlx_loop(data->game->init);
 	mlx_terminate(data->game->init);
+	free_leaks(data);
 }

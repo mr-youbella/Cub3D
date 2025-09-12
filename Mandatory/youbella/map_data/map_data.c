@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 14:14:53 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:05:16 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ t_map_data	*ft_map_data(char *path)
 		return (NULL);
 	ft_memset(map_data, 0, sizeof(t_map_data));
 	if (!get_identifiers(fd, &line, map_data))
-		return (NULL);
+		return (free(map_data), NULL);
 	while (line)
 	{
 		if (line[0] != '\n' && !is_empty(line))
@@ -119,8 +119,8 @@ t_map_data	*ft_map_data(char *path)
 		line = get_next_line(fd);
 	}
 	if (!get_lines_map(map_data, &line, fd))
-		return (NULL);
+		return (free(map_data), NULL);
 	if (!add_spaces_in_map(map_data, 0, 0, 0) || !check_map(map_data))
-		return (NULL);
+		return (free(map_data), NULL);
 	return (map_data);
 }

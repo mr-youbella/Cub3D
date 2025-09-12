@@ -6,11 +6,23 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 13:44:14 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:10:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+static void	free_leaks(t_data *data)
+{
+	free(data->game);
+	free(data->walls);
+	free(data->donnee);
+	free(data->door);
+	free(data->map_data);
+	free(data->dragons);
+	free(data->knife);
+	free(data);
+}
 
 static short	set_images_walls(t_data *data)
 {
@@ -78,17 +90,18 @@ int	main(int argc, char **argv)
 		return (1);
 	data->game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", true);
 	if (!data->game->init)
-		return (1);
+		return (free_leaks(data), 1);
 	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
 	mlx_image_to_window(data->game->init, data->game->img, 0, 0);
 	data->map_data = ft_map_data(argv[1]);
 	if (!data->map_data)
-		return (1);
+		return (free_leaks(data), 1);
 	player_position(data);
 	if (!set_images(data))
-		return (1);
+		return (free_leaks(data), 1);
 	data->dragons->frame_speed = 20;
 	data->dragons->height_dragon = 100;
 	update(data);
 	mlx(data);
+	free_leaks(data);
 }
