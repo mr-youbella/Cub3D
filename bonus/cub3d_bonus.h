@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 18:25:01 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 14:04:32 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ typedef struct s_data
 	t_knife		*knife;
 }	t_data;
 
+t_data		*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife);
+
 // WKANNOUF
 void		update(t_data *data);
 void		check_key_moves(void *param);
@@ -163,5 +165,13 @@ void		draw_hand_knife(t_game *game, t_knife *knife);
 void		draw_wall_door(t_game *game, t_data *data,
 				t_walls *walls, short is_door);
 void		move_dragon(t_data *data);
-
+short		get_hexa_colors(t_map_data *map_data);
+short		get_identifiers(int fd, char **line, t_map_data *map_data);
+short		identifiers(t_map_data *map_data,
+				char **line, char *identifier, size_t i);
+short		is_valid_map(char **map, size_t i, size_t j);
+short		check_map(t_map_data *map_data);
+short		identifiers_colors(t_map_data *map_data,
+				char **line, char *identifier, size_t i);
+short		is_empty(char *line);
 #endif

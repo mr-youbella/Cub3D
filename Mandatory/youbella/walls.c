@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 18:25:23 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 14:10:39 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	put_pixels(mlx_texture_t *texture, t_data *data, int start, int index)
+static void	put_pixels(mlx_texture_t *texture,
+						t_data *data, int start, int index)
 {
 	size_t	r;
 	size_t	g;
@@ -28,7 +29,7 @@ void	put_pixels(mlx_texture_t *texture, t_data *data, int start, int index)
 	mlx_put_pixel(data->game->img, data->walls->columns, start, color);
 }
 
-void	get_pixels(mlx_texture_t *texture,
+static void	get_pixels(mlx_texture_t *texture,
 					int l_height, t_data *data, int start)
 {
 	int	d;
@@ -48,7 +49,7 @@ void	get_pixels(mlx_texture_t *texture,
 	}
 }
 
-mlx_texture_t	*ft_texture(t_walls *walls)
+static mlx_texture_t	*ft_texture(t_walls *walls)
 {
 	if (walls->side == 0)
 	{
@@ -62,7 +63,7 @@ mlx_texture_t	*ft_texture(t_walls *walls)
 	return (walls->so_img);
 }
 
-void	prep_value(t_data *data, t_walls *walls)
+static void	prep_value(t_data *data, t_walls *walls)
 {
 	if (walls->side == 0 && walls->ray_dir_x != 0)
 		walls->perp_w_dist = (walls->map_x - data->pos_x
@@ -70,15 +71,6 @@ void	prep_value(t_data *data, t_walls *walls)
 	else if (walls->side == 1 && walls->ray_dir_y != 0)
 		walls->perp_w_dist = (walls->map_y - data->pos_y
 				+ (1 - walls->step_y) / 2) / walls->ray_dir_y;
-}
-
-void	wall_x_value(t_data *data, t_walls *walls)
-{
-	if (walls->side == 0)
-		walls->wall_x = data->pos_y + walls->perp_w_dist * walls->ray_dir_y;
-	else
-		walls->wall_x = data->pos_x + walls->perp_w_dist * walls->ray_dir_x;
-	walls->wall_x -= floor(walls->wall_x);
 }
 
 void	draw_wall_door(t_data *data, t_walls *walls)
@@ -99,7 +91,11 @@ void	draw_wall_door(t_data *data, t_walls *walls)
 	if (walls->draw_end >= HEIGHT)
 		walls->draw_end = HEIGHT - 1;
 	start = draw_start;
-	wall_x_value(data, walls);
+	if (walls->side == 0)
+		walls->wall_x = data->pos_y + walls->perp_w_dist * walls->ray_dir_y;
+	else
+		walls->wall_x = data->pos_x + walls->perp_w_dist * walls->ray_dir_x;
+	walls->wall_x -= floor(walls->wall_x);
 	walls->tex_x = (int)(walls->wall_x * (float)texture->width);
 	get_pixels(texture, l_height, data, start);
 }

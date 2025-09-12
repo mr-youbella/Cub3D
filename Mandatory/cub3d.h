@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 18:24:44 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 14:09:18 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,14 @@ void		player_position(t_data *player);
 char		*get_next_line(int fd);
 void		draw_wall_door(t_data *data, t_walls *walls);
 t_map_data	*ft_map_data(char *path);
+short		get_hexa_colors(t_map_data *map_data);
+short		get_identifiers(int fd, char **line, t_map_data *map_data);
+short		identifiers(t_map_data *map_data,
+				char **line, char *identifier, size_t i);
+short		is_valid_map(char **map, size_t i, size_t j);
+short		check_map(t_map_data *map_data);
+short		identifiers_colors(t_map_data *map_data,
+				char **line, char *identifier, size_t i);
+short		is_empty(char *line);
 
 #endif

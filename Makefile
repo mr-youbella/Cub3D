@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+         #
+#    By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/11 17:07:26 by wkannouf         ###   ########.fr        #
+#    Updated: 2025/09/12 14:18:23 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,13 @@ NAME = cub3D
 NAME_BNS = cub3D_bonus
 
 SRCS = mandatory/cub3d.c mandatory/handle_distroy.c mandatory/key_moves.c mandatory/rotation_key.c mandatory/update_Player.c \
-		mandatory/youbella/walls.c mandatory/youbella/parse_player.c mandatory/youbella/get_next_line.c mandatory/youbella/map_data.c
+		mandatory/youbella/walls.c mandatory/youbella/parse_player.c mandatory/youbella/map_data/get_next_line.c mandatory/youbella/map_data/map_data.c \
+		mandatory/youbella/map_data/identifiers.c mandatory/youbella/map_data/get_colors_fc.c mandatory/youbella/map_data/identifiers2.c \
+		mandatory/youbella/map_data/check_is_valid_map.c
 SRCS_BNS = bonus/cub3d_bonus.c bonus/handle_distroy_bonus.c bonus/key_moves_bonus.c bonus/rotation_key_bonus.c bonus/update_Player_bonus.c \
-		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/get_next_line_bonus.c bonus/youbella/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c bonus/youbella/draw_knife_hand_bonus.c\
-		bonus/rotation_mouse_bonus.c bonus/draw_mini_map.c bonus/check_wall_door.c bonus/draw_sky_floor_for_update.c
+		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/map_data_bonus/get_next_line_bonus.c bonus/youbella/map_data_bonus/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c bonus/youbella/draw_knife_hand_bonus.c \
+		bonus/rotation_mouse_bonus.c bonus/draw_mini_map.c bonus/check_wall_door.c bonus/draw_sky_floor_for_update.c bonus/alloc_structs_bonus.c bonus/youbella/map_data_bonus/identifiers_bonus.c bonus/youbella/map_data_bonus/get_colors_fc_bonus.c bonus/youbella/map_data_bonus/identifiers2_bonus.c \
+		bonus/youbella/map_data_bonus/check_is_valid_map_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BNS = $(SRCS_BNS:.c=.o)
