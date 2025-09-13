@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/13 05:27:11 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:39:30 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	main(int argc, char **argv)
 		return (free_leaks(data), 1);
 	data->dragons->frame_speed = 20;
 	data->dragons->height_dragon = 100;
-	update(data);
+	update(data, 0);
 	mlx(data);
 	free_leaks(data);
 }

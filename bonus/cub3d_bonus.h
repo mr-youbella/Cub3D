@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/13 05:25:03 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:39:48 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ typedef struct s_data
 t_data		*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife);
 
 // WKANNOUF
-void		update(t_data *data);
+void		update(t_data *data, float camera_x);
 void		check_key_moves(void *param);
 void		rotate_key(void *arg);
 void		destroy(void *arg);
@@ -174,4 +174,6 @@ short		check_map(t_map_data *map_data);
 short		identifiers_colors(t_map_data *map_data,
 				char **line, char *identifier, size_t i);
 short		is_empty(char *line);
+void		draw_map_terminal(char **map, int pos_y, int pos_x, int j);
+
 #endif

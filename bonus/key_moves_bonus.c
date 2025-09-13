@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_moves_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:01:25 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 16:36:32 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:39:52 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,5 @@ void	check_key_moves(void *arg)
 	else if (mlx_is_key_down(data->game->init, MLX_KEY_A))
 		key_a(data);
 	key_door(data);
-	update(data);
+	update(data, 0);
 }

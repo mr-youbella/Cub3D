@@ -52,6 +52,6 @@ void	rotate_mouse(void *arg)
 		delta_x = data->game->pos_mouse_x - data->game->ex_pos_mouse_x;
 		data->game->ex_pos_mouse_x = data->game->pos_mouse_x;
 		rotate_left_right(data, delta_x);
-		update(data);
+		update(data, 0);
 	}
 }

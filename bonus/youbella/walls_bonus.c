@@ -6,11 +6,40 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 20:11:40 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:35:21 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
+
+void	draw_map_terminal(char **map, int pos_y, int pos_x, int j)
+{
+	int	i;
+
+	1 && (printf("\033[H\033[J"), i = 0);
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'W'
+				|| map[i][j] == 'S' || map[i][j] == 'E')
+				map[i][j] = '0';
+			if (map[i][j] == '1')
+				printf("\033[1;31m");
+			if (map[i][j] == 'D')
+				printf("\033[1;33m");
+			if (map[i][j] == 'O')
+				printf("\033[1;32m");
+			if (i == pos_y && j == pos_x)
+				printf("\033[1;34mP");
+			else
+				printf("%c", map[i][j]);
+			1 && (printf("\033[0m"), j++);
+		}
+		1 && (printf("\n"), i++);
+	}
+}
 
 static size_t	get_rgba_walls_door(mlx_texture_t *texture, int index)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_key_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:21:59 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 16:36:40 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:39:56 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	rotate_key(void *arg)
 	data = (t_data *)arg;
 	rotate_left_right(data);
 	move_dragon(data);
-	update(data);
+	update(data, 0);
 }
