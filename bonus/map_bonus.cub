@@ -1,7 +1,7 @@
-NO wall1.png
-SO wall2.png
-WE wall3.png
-EA wall4.png
+NO walls_images/wall1.png
+SO walls_images/wall2.png
+WE walls_images/wall3.png
+EA walls_images/wall4.png
 
 C 8,8,8
 F 92,7,7

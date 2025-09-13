@@ -45,6 +45,7 @@ void	rotate_mouse(void *arg)
 	data = (t_data *)arg;
 	if (data->game->flag_key_m || mlx_is_key_down(data->game->init, MLX_KEY_M))
 	{
+		mlx_set_cursor_mode(data->game->init, MLX_MOUSE_DISABLED);
 		data->game->flag_key_m = 1;
 		mlx_get_mouse_pos(data->game->init, &data->game->pos_mouse_x,
 			&data->game->pos_mouse_y);

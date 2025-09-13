@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 05:52:11 by youbella          #+#    #+#             */
-/*   Updated: 2024/11/13 11:24:41 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:36:55 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,9 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	if (fd < 0 || !s)
 		return ;
+	if (fd == 2)
+		write(fd, "\033[1;31m", 7);
 	write(fd, s, ft_strlen(s));
+	if (fd == 2)
+		write(fd, "\033[0m", 4);
 }

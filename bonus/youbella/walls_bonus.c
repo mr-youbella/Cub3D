@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 13:07:00 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:11:40 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ static mlx_texture_t	*get_texture(t_data *data,
 	else if (walls->side == 0)
 	{
 		if (walls->step_x == -1)
-			texture = walls->ea_img;
-		else
 			texture = walls->we_img;
+		else
+			texture = walls->ea_img;
 	}
 	else
 	{

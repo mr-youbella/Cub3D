@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identifiers2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:47:09 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 14:14:48 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:19:49 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static short	get_we_ea_image(t_map_data *map_data, size_t i, size_t j)
 		i++;
 	if (!ft_strlen(&map_data->we_img[i]))
 	{
-		ft_putstr_fd("WE Image not found.\n", 2);
+		ft_putstr_fd("Error\nWE Image not found.\n", 2);
 		return (0);
 	}
 	j = ft_strlen(map_data->we_img) - 1;
@@ -74,7 +74,7 @@ static short	get_we_ea_image(t_map_data *map_data, size_t i, size_t j)
 		i++;
 	if (!ft_strlen(&map_data->ea_img[i]))
 	{
-		ft_putstr_fd("EA Image not found.\n", 2);
+		ft_putstr_fd("Error\nEA Image not found.\n", 2);
 		return (0);
 	}
 	j = ft_strlen(map_data->ea_img) - 1;
@@ -93,7 +93,7 @@ static short	get_name_images(t_map_data *map_data)
 	while (map_data->no_img[i] == ' ' || map_data->no_img[i] == '\t')
 		i++;
 	if (!ft_strlen(&map_data->no_img[i]))
-		return (ft_putstr_fd("NO Image not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nNO Image not found.\n", 2), 0);
 	j = ft_strlen(map_data->no_img) - 1;
 	while (map_data->no_img[j] == ' ' || map_data->no_img[j] == '\t')
 		j--;
@@ -102,7 +102,7 @@ static short	get_name_images(t_map_data *map_data)
 	while (map_data->so_img[i] == ' ' || map_data->so_img[i] == '\t')
 		i++;
 	if (!ft_strlen(&map_data->so_img[i]))
-		return (ft_putstr_fd("SO Image not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nSO Image not found.\n", 2), 0);
 	j = ft_strlen(map_data->so_img) - 1;
 	while (map_data->so_img[j] == ' ' || map_data->so_img[j] == '\t')
 		j--;

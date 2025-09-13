@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+         #
+#    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/12 14:18:23 by youbella         ###   ########.fr        #
+#    Updated: 2025/09/13 01:32:55 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ $(NAME): $(OBJS)
 		@make -C libft
 		$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a -o $(NAME)
 $(NAME_BNS): $(OBJS_BNS)
-			@make -C libft
-			$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a -o $(NAME_BNS)
+		@make -C libft
+		$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a -o $(NAME_BNS)
 
 mandatory/%.o: mandatory/%.c mandatory/cub3d.h bonus/cub3d_bonus.h
 	$(CC) $(FLAGS) -c $< -o $@

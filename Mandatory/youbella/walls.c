@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 14:10:39 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:33:16 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static mlx_texture_t	*ft_texture(t_walls *walls)
 	if (walls->side == 0)
 	{
 		if (walls->step_x == -1)
-			return (walls->ea_img);
-		else
 			return (walls->we_img);
+		else
+			return (walls->ea_img);
 	}
 	if (walls->step_y == -1)
 		return (walls->no_img);

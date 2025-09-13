@@ -6,24 +6,24 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:00:35 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/11 11:38:09 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:09:13 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
 void	key_knife(mouse_key_t button, action_t action,
-					modifier_key_t mods, void *param)
+					modifier_key_t mods, void *arg)
 {
 	t_data	*data;
 
 	(void)mods;
-	data = (t_data *)param;
+	data = (t_data *)arg;
 	if (button == MLX_MOUSE_BUTTON_LEFT && action == MLX_PRESS)
 		data->knife->key_knife = !data->knife->key_knife;
 }
 
-void	close_door(t_data *data)
+static void	close_door(t_data *data)
 {
 	float	x;
 	float	y;
@@ -41,7 +41,7 @@ void	close_door(t_data *data)
 	}
 }
 
-void	check_x_door(t_data *data)
+static void	check_x_door(t_data *data)
 {
 	if (data->map_data->map[(int)(data->pos_y)][(int)(data->pos_x - 1)] == 'D')
 	{

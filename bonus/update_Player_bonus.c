@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_Player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:02:45 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 17:07:42 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:25:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,39 @@ static void	drawing_columns(t_data *data)
 		draw_wall_door(data->game, data, data->walls, 1);
 }
 
+void	draw_map_terminal(char **map, int pos_y, int pos_x)
+{
+	int	i;
+	int	j;
+
+	printf("\033[H\033[J");
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'S' || map[i][j] == 'E')
+				map[i][j] = '0';
+			printf("\033[1m");
+			if (map[i][j] == '1')
+				printf("\033[31m");
+			if (map[i][j] == 'D')
+				printf("\033[33m");
+			if (map[i][j] == 'O')
+				printf("\033[32m");
+			if (i == pos_y && j == pos_x)
+				printf("\033[34mP");
+			else
+				printf("%c", map[i][j]);
+			printf("\033[0m");
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
 void	update(t_data *data)
 {
 	float	camera_x;
@@ -119,4 +152,5 @@ void	update(t_data *data)
 	}
 	draw_dragons(data->game, data->dragons, data->knife);
 	draw_map(data);
+	draw_map_terminal(data->map_data->map, (int)data->pos_y, (int)data->pos_x);
 }

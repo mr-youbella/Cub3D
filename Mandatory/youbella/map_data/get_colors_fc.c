@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors_fc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:50:08 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 14:14:41 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:19:23 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static short	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_f_color[i] == ' ' || map_data->str_f_color[i] == '\t')
 		i++;
 	if (!ft_strlen(&map_data->str_f_color[i]))
-		return (ft_putstr_fd("F color not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nF color not found.\n", 2), 0);
 	j = ft_strlen(map_data->str_f_color) - 1;
 	while (map_data->str_f_color[j] == ' ' || map_data->str_f_color[j] == '\t')
 		j--;
@@ -60,7 +60,7 @@ static short	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_c_color[i] == ' ' || map_data->str_c_color[i] == '\t')
 		i++;
 	if (!ft_strlen(&map_data->str_c_color[i]))
-		return (ft_putstr_fd("C color not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nC color not found.\n", 2), 0);
 	j = ft_strlen(map_data->str_c_color) - 1;
 	while (map_data->str_c_color[j] == ' ' || map_data->str_c_color[j] == '\t')
 		j--;
@@ -75,25 +75,25 @@ static short	check_syntax_f_color(t_map_data *map_data,
 
 	split = ft_split(map_data->str_f_color, ',');
 	if (!split)
-		return (ft_putstr_fd("F color not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nF color not found.\n", 2), 0);
 	while (split[i])
 	{
 		if (i == 3)
-			return (ft_putstr_fd("Syntax error in F color\n", 2), 0);
+			return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
 		j = 0;
 		while (split[i][j])
 		{
 			if (!(split[i][j] >= '0' && split[i][j] <= '9'))
-				return (ft_putstr_fd("Syntax error in F color\n", 2), 0);
+				return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
 			j++;
 		}
 		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
-			return (ft_putstr_fd("Syntax error in F color\n", 2), 0);
+			return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
 		rgba[i] = ft_atoi(split[i]);
 		i++;
 	}
 	if (i != 3)
-		return (ft_putstr_fd("Syntax error in F color\n", 2), 0);
+		return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
 	map_data->f_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
 	return (1);
 }
@@ -105,25 +105,25 @@ static short	check_syntax_c_color(t_map_data *map_data,
 
 	split = ft_split(map_data->str_c_color, ',');
 	if (!split)
-		return (ft_putstr_fd("C color not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nC color not found.\n", 2), 0);
 	while (split[i])
 	{
 		if (i == 3)
-			return (ft_putstr_fd("Syntax error in C color\n", 2), 0);
+			return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
 		j = 0;
 		while (split[i][j])
 		{
 			if (!(split[i][j] >= '0' && split[i][j] <= '9'))
-				return (ft_putstr_fd("Syntax error in C color\n", 2), 0);
+				return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
 			j++;
 		}
 		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
-			return (ft_putstr_fd("Syntax error in C color\n", 2), 0);
+			return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
 		rgba[i] = ft_atoi(split[i]);
 		i++;
 	}
 	if (i != 3)
-		return (ft_putstr_fd("Syntax error in C color\n", 2), 0);
+		return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
 	map_data->c_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
 	return (1);
 }

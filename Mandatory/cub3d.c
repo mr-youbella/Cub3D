@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 15:09:18 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:30:34 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ static short	set_image(t_data *data, t_map_data *map_data)
 {
 	data->walls->no_img = mlx_load_png(map_data->no_img);
 	if (!data->walls->no_img)
-		return (0);
+		return (ft_putstr_fd("Error\nImage no_img not found\n", 2), 0);
 	data->walls->so_img = mlx_load_png(map_data->so_img);
 	if (!data->walls->so_img)
-		return (0);
+		return (ft_putstr_fd("Error\nImage so_img not found\n", 2), 0);
 	data->walls->we_img = mlx_load_png(map_data->we_img);
 	if (!data->walls->we_img)
-		return (0);
+		return (ft_putstr_fd("Error\nImage we_img not found\n", 2), 0);
 	data->walls->ea_img = mlx_load_png(map_data->ea_img);
 	if (!data->walls->ea_img)
-		return (0);
+		return (ft_putstr_fd("Error\nImage ea_img not found\n", 2), 0);
 	return (1);
 }
 

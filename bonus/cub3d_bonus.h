@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 14:04:32 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/13 05:25:03 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void		draw_wall_door(t_game *game, t_data *player,
 void		draw_dragons(t_game *game, t_dragons *dragons, t_knife *knife);
 void		key_door(t_data *data);
 void		key_knife(mouse_key_t button, action_t action,
-				modifier_key_t mods, void *param);
+				modifier_key_t mods, void *arg);
 void		draw_hand_knife(t_game *game, t_knife *knife);
 void		draw_wall_door(t_game *game, t_data *data,
 				t_walls *walls, short is_door);
