@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
+#    By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/13 01:32:55 by youbella         ###   ########.fr        #
+#    Updated: 2025/09/22 21:10:03 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,35 +21,76 @@ SRCS = mandatory/cub3d.c mandatory/handle_distroy.c mandatory/key_moves.c mandat
 		mandatory/youbella/map_data/identifiers.c mandatory/youbella/map_data/get_colors_fc.c mandatory/youbella/map_data/identifiers2.c \
 		mandatory/youbella/map_data/check_is_valid_map.c
 SRCS_BNS = bonus/cub3d_bonus.c bonus/handle_distroy_bonus.c bonus/key_moves_bonus.c bonus/rotation_key_bonus.c bonus/update_Player_bonus.c \
-		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/map_data_bonus/get_next_line_bonus.c bonus/youbella/map_data_bonus/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c bonus/youbella/draw_knife_hand_bonus.c \
-		bonus/rotation_mouse_bonus.c bonus/draw_mini_map.c bonus/check_wall_door.c bonus/draw_sky_floor_for_update.c bonus/alloc_structs_bonus.c bonus/youbella/map_data_bonus/identifiers_bonus.c bonus/youbella/map_data_bonus/get_colors_fc_bonus.c bonus/youbella/map_data_bonus/identifiers2_bonus.c \
+		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/map_data_bonus/get_next_line_bonus.c \
+		bonus/youbella/map_data_bonus/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c \
+		bonus/youbella/draw_knife_hand_bonus.c bonus/rotation_mouse_bonus.c bonus/draw_mini_map.c bonus/check_wall_door.c \
+		bonus/draw_sky_floor_for_update.c bonus/alloc_structs_bonus.c bonus/youbella/map_data_bonus/identifiers_bonus.c \
+		bonus/youbella/map_data_bonus/get_colors_fc_bonus.c bonus/youbella/map_data_bonus/identifiers2_bonus.c \
 		bonus/youbella/map_data_bonus/check_is_valid_map_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BNS = $(SRCS_BNS:.c=.o)
 
-all: $(NAME)
-bonus: $(NAME_BNS)
+all: print $(NAME)
+	@printf "\n\033[1;32mGame is ready use ./cub3D [map.cub] .\n\033[0m"
+bonus: print $(NAME_BNS)
+	@printf "\n\033[1;32mGame is ready use ./cub3D_bonus [map.cub] .\n\033[0m"
+
+print: 
+	@printf "\033[32m                                    .──,─..─.                  \n\033[0m"
+	@sleep 0.1
+	@printf "\033[32m  ,────..                          ╱   ╱     '.      ,───,     \n\033[0m"
+	@sleep 0.1
+	@printf "\033[32m ╱   ╱   ╲                ,───,   ╱ ..╱        ;   .'  .' .╲   \n\033[0m"
+	@sleep 0.1
+	@printf "\033[32m│   :     :         ,──,,───.'│   ╲ ..╲  ..─    ',───.'     ╲  \n\033[0m"
+	@sleep 0.1
+	@printf "\033[32m.   │  ;. ╱       ,'_ ╱││   │ :    ╲___╲╱   ╲   :│   │  ..╲  │ \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[32m.   ; ╱──.   .──. │  │ ::   : :         ╲   :   │:   : │  '  │ \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[32m;   │ ;    ,'_ ╱│ :  . │:     │,─.      ╱  ╱   ╱ │   ' '  ;  : \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[32m│   : │    │  ' │ │  . .│   : '  │      ╲  ╲   ╲ '   │ ;  .  │ \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[31m.   │ '___ │  │ ' │  │ ││   │  ╱ :  ___ ╱   :   ││   │ :  │  ' \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[31m'   ; : .'│:  │ : ;  ; │'   : │: │ ╱   ╱╲   ╱   :'   : │ ╱  ;  \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[31m'   │ '╱  :'  :  .──'   ╲   │ '╱ :╱ ,,╱  ',─    .│   │ '. ,╱   \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[31m│   :    ╱ :  ,      .─.╱   :    │╲ ''╲        ; ;   :  .'     \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[31m ╲   ╲ .'   .──.────'   ╱    ╲  ╱  ╲   ╲     .'  │   ,.'       \n\033[0m" 
+	@sleep 0.1
+	@printf "\033[31m  .───.                 .─'────'    .──.─,,─'    '───'         \n\033[0m" 
+	@printf "\n\033[36mWait for the game to install in progress...\n\033[0m"
 
 $(NAME): $(OBJS)
-		@make -C libft
-		$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a -o $(NAME)
+		@printf "\033[34mWaiting...\n\033[0m"
+		@make -C libft 1> /dev/null
+		@printf "\033[34mWaiting...\n\033[0m"
+		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a -o $(NAME)
 $(NAME_BNS): $(OBJS_BNS)
-		@make -C libft
-		$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a -o $(NAME_BNS)
+		@printf "\033[34mWaiting...\n\033[0m"
+		@make -C libft 1> /dev/null
+		@printf "\033[34mWaiting...\n\033[0m"
+		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a -o $(NAME_BNS)
 
-mandatory/%.o: mandatory/%.c mandatory/cub3d.h bonus/cub3d_bonus.h
-	$(CC) $(FLAGS) -c $< -o $@
+mandatory/%.o: mandatory/%.c mandatory/cub3d.h
+	@$(CC) $(FLAGS) -c $< -o $@
 bonus/%.o: bonus/%.c bonus/cub3d_bonus.h
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
+	@printf "\033[31mGame files have been deleted.\033[0m\n"
 	@make clean -C libft
-	rm -f $(OBJS) $(OBJS_BNS)
+	@rm -f $(OBJS) $(OBJS_BNS)
 
 fclean: clean
+		@printf "\033[31mThe game has been deleted.\033[0m\n"
 		@make fclean -C libft
-		rm -f $(NAME) $(NAME_BNS)
+		@rm -f $(NAME) $(NAME_BNS)
 
 re: fclean all
 		@make re -C libft

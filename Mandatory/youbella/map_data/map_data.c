@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 20:20:54 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:17:03 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-short	is_empty(char *line)
+bool	is_empty(char *line)
 {
 	size_t	i;
 
@@ -20,10 +20,10 @@ short	is_empty(char *line)
 	while (line[i] && line[i] != '\n')
 	{
 		if (line[i] != ' ' && line[i] != '\t')
-			return (0);
+			return (false);
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
 static size_t	ft_long_row(char **map)
@@ -44,7 +44,7 @@ static size_t	ft_long_row(char **map)
 	return (max_len);
 }
 
-static short	add_spaces_in_map(t_map_data *map_data,
+static bool	add_spaces_in_map(t_map_data *map_data,
 									size_t j, size_t k, size_t i)
 {
 	size_t	len_row;
@@ -60,7 +60,7 @@ static short	add_spaces_in_map(t_map_data *map_data,
 		{
 			new_row = malloc(len_row + (long_row - len_row) + 1);
 			if (!new_row)
-				return (0);
+				return (false);
 			while (map_data->map[i][j])
 				new_row[k++] = map_data->map[i][j++];
 			j = 0;
@@ -70,10 +70,10 @@ static short	add_spaces_in_map(t_map_data *map_data,
 		}
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
-static short	get_lines_map(t_map_data *map_data, char **line, int fd)
+static bool	get_lines_map(t_map_data *map_data, char **line, int fd)
 {
 	char	*join_line;
 	char	**split;
@@ -87,7 +87,7 @@ static short	get_lines_map(t_map_data *map_data, char **line, int fd)
 			if (*line && !is_empty(*line))
 			{
 				ft_putstr_fd("Error\nError: Empty line in map!\n", 2);
-				return (0);
+				return (false);
 			}
 		}
 		join_line = ft_strjoin(join_line, *line);
@@ -97,7 +97,7 @@ static short	get_lines_map(t_map_data *map_data, char **line, int fd)
 	if (!split)
 		return (ft_putstr_fd("Error\nMap no found\n", 2), 0);
 	map_data->map = split;
-	return (1);
+	return (true);
 }
 
 t_map_data	*ft_map_data(char *path)

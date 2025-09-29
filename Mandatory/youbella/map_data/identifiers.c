@@ -6,13 +6,13 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:53:26 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 14:14:44 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:16:19 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static short	identifiers_ws(t_map_data *map_data,
+static bool	identifiers_ws(t_map_data *map_data,
 						char **line, char *identifier, size_t i)
 {
 	if ((*line)[i] == 'W' && identifier[2] == 'W')
@@ -24,7 +24,7 @@ static short	identifiers_ws(t_map_data *map_data,
 			identifier[2] = 'X';
 		}
 		else
-			return (0);
+			return (false);
 	}
 	else if ((*line)[i] == 'E' && identifier[3] == 'E')
 	{
@@ -35,12 +35,12 @@ static short	identifiers_ws(t_map_data *map_data,
 			identifier[3] = 'X';
 		}
 		else
-			return (0);
+			return (false);
 	}
-	return (1);
+	return (true);
 }
 
-static short	identifiers_news(t_map_data *map_data,
+static bool	identifiers_news(t_map_data *map_data,
 							char **line, char *identifier, size_t i)
 {
 	if ((*line)[i] == 'N' && identifier[0] == 'N')
@@ -52,7 +52,7 @@ static short	identifiers_news(t_map_data *map_data,
 			identifier[0] = 'X';
 		}
 		else
-			return (0);
+			return (false);
 	}
 	else if ((*line)[i] == 'S' && identifier[1] == 'S')
 	{
@@ -63,14 +63,14 @@ static short	identifiers_news(t_map_data *map_data,
 			identifier[1] = 'X';
 		}
 		else
-			return (0);
+			return (false);
 	}
 	if (!identifiers_ws(map_data, line, identifier, i))
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
-short	identifiers(t_map_data *map_data,
+bool	identifiers(t_map_data *map_data,
 						char **line, char *identifier, size_t i)
 {
 	if (((*line)[i] == 'N' && identifier[0] == 'N')
@@ -79,9 +79,9 @@ short	identifiers(t_map_data *map_data,
 		|| ((*line)[i] == 'E' && identifier[3] == 'E'))
 	{
 		if (!identifiers_news(map_data, line, identifier, i))
-			return (0);
+			return (false);
 	}
 	else if (!identifiers_colors(map_data, line, identifier, i))
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }

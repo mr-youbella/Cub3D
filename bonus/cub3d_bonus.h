@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/13 05:39:48 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:22:48 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdbool.h>
 # include "../libft/libft.h"
 # include "../.MLX42.h"
 
@@ -165,15 +166,15 @@ void		draw_hand_knife(t_game *game, t_knife *knife);
 void		draw_wall_door(t_game *game, t_data *data,
 				t_walls *walls, short is_door);
 void		move_dragon(t_data *data);
-short		get_hexa_colors(t_map_data *map_data);
-short		get_identifiers(int fd, char **line, t_map_data *map_data);
-short		identifiers(t_map_data *map_data,
+bool		get_hexa_colors(t_map_data *map_data);
+bool		get_identifiers(int fd, char **line, t_map_data *map_data);
+bool		identifiers(t_map_data *map_data,
 				char **line, char *identifier, size_t i);
-short		is_valid_map(char **map, size_t i, size_t j);
-short		check_map(t_map_data *map_data);
-short		identifiers_colors(t_map_data *map_data,
+bool		is_valid_map(char **map, size_t i, size_t j);
+bool		check_map(t_map_data *map_data);
+bool		identifiers_colors(t_map_data *map_data,
 				char **line, char *identifier, size_t i);
-short		is_empty(char *line);
+bool		is_empty(char *line);
 void		draw_map_terminal(char **map, int pos_y, int pos_x, int j);
 
 #endif

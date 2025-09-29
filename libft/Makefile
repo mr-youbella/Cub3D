@@ -21,19 +21,19 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OSRC)
-	ar -rc $(NAME) $(OSRC)
+	@ar -rc $(NAME) $(OSRC)
 
 bonus: $(OBNS)
-	ar -rc $(NAME) $(OBNS)
+	@ar -rc $(NAME) $(OBNS)
 
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f $(OSRC) $(OBNS)
+	@rm -f $(OSRC) $(OBNS)
 
 fclean: clean
-	rm -f libft.a
+	@rm -f libft.a
 
 re: fclean all
 

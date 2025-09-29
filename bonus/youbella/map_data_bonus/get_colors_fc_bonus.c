@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors_fc_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:50:08 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 20:17:50 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:19:14 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d_bonus.h"
 
-short	identifiers_colors(t_map_data *map_data,
+bool	identifiers_colors(t_map_data *map_data,
 							char **line, char *identifier, size_t i)
 {
 	if ((*line)[i] == 'F' && identifier[4] == 'F')
@@ -23,7 +23,7 @@ short	identifiers_colors(t_map_data *map_data,
 				= ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1),
 					identifier[4] = 'X');
 		else
-			return (0);
+			return (false);
 	}
 	else if ((*line)[i] == 'C' && identifier[5] == 'C')
 	{
@@ -35,14 +35,14 @@ short	identifiers_colors(t_map_data *map_data,
 			identifier[5] = 'X';
 		}
 		else
-			return (0);
+			return (false);
 	}
 	else
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
-static short	check_colors_is_found(t_map_data *map_data)
+static bool	check_colors_is_found(t_map_data *map_data)
 {
 	size_t	i;
 	size_t	j;
@@ -65,10 +65,10 @@ static short	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_c_color[j] == ' ' || map_data->str_c_color[j] == '\t')
 		j--;
 	map_data->str_c_color = ft_substr(map_data->str_c_color, i, j - i + 1);
-	return (1);
+	return (true);
 }
 
-static short	check_syntax_f_color(t_map_data *map_data,
+static bool	check_syntax_f_color(t_map_data *map_data,
 								size_t i, size_t j, char **split)
 {
 	int		rgba[3];
@@ -95,10 +95,10 @@ static short	check_syntax_f_color(t_map_data *map_data,
 	if (i != 3)
 		return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
 	map_data->f_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
-	return (1);
+	return (true);
 }
 
-static short	check_syntax_c_color(t_map_data *map_data,
+static bool	check_syntax_c_color(t_map_data *map_data,
 								size_t i, size_t j, char **split)
 {
 	int		rgba[3];
@@ -125,16 +125,16 @@ static short	check_syntax_c_color(t_map_data *map_data,
 	if (i != 3)
 		return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
 	map_data->c_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
-	return (1);
+	return (true);
 }
 
-short	get_hexa_colors(t_map_data *map_data)
+bool	get_hexa_colors(t_map_data *map_data)
 {
 	if (!check_colors_is_found(map_data))
-		return (0);
+		return (false);
 	if (!check_syntax_f_color(map_data, 0, 0, NULL))
-		return (0);
+		return (false);
 	if (!check_syntax_c_color(map_data, 0, 0, NULL))
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }

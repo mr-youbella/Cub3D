@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors_fc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:50:08 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 20:19:23 by youbella         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:15:46 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-short	identifiers_colors(t_map_data *map_data,
+bool	identifiers_colors(t_map_data *map_data,
 							char **line, char *identifier, size_t i)
 {
 	if ((*line)[i] == 'F' && identifier[4] == 'F')
@@ -23,7 +23,7 @@ short	identifiers_colors(t_map_data *map_data,
 				= ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1),
 					identifier[4] = 'X');
 		else
-			return (0);
+			return (false);
 	}
 	else if ((*line)[i] == 'C' && identifier[5] == 'C')
 	{
@@ -35,14 +35,14 @@ short	identifiers_colors(t_map_data *map_data,
 			identifier[5] = 'X';
 		}
 		else
-			return (0);
+			return (false);
 	}
 	else
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
-static short	check_colors_is_found(t_map_data *map_data)
+static bool	check_colors_is_found(t_map_data *map_data)
 {
 	size_t	i;
 	size_t	j;
@@ -51,7 +51,7 @@ static short	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_f_color[i] == ' ' || map_data->str_f_color[i] == '\t')
 		i++;
 	if (!ft_strlen(&map_data->str_f_color[i]))
-		return (ft_putstr_fd("Error\nF color not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nF color not found.\n", 2), false);
 	j = ft_strlen(map_data->str_f_color) - 1;
 	while (map_data->str_f_color[j] == ' ' || map_data->str_f_color[j] == '\t')
 		j--;
@@ -60,12 +60,12 @@ static short	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_c_color[i] == ' ' || map_data->str_c_color[i] == '\t')
 		i++;
 	if (!ft_strlen(&map_data->str_c_color[i]))
-		return (ft_putstr_fd("Error\nC color not found.\n", 2), 0);
+		return (ft_putstr_fd("Error\nC color not found.\n", 2), false);
 	j = ft_strlen(map_data->str_c_color) - 1;
 	while (map_data->str_c_color[j] == ' ' || map_data->str_c_color[j] == '\t')
 		j--;
 	map_data->str_c_color = ft_substr(map_data->str_c_color, i, j - i + 1);
-	return (1);
+	return (true);
 }
 
 static short	check_syntax_f_color(t_map_data *map_data,
