@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alloc_structs_bonus.c                              :+:      :+:    :+:   */
+/*   alloc_free_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:43:02 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/13 01:16:18 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:03:59 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,41 @@ t_data	*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife)
 	1 && (data->map_data = map_data, data->door = door);
 	1 && (data->dragons = dragons, data->knife = knife);
 	return (data);
+}
+
+static void	delete_texture(t_data *data)
+{
+	if (data->walls->no_img)
+		mlx_delete_texture(data->walls->no_img);
+	if (data->walls->so_img)
+		mlx_delete_texture(data->walls->so_img);
+	if (data->walls->we_img)
+		mlx_delete_texture(data->walls->we_img);
+	if (data->walls->ea_img)
+		mlx_delete_texture(data->walls->ea_img);
+	if (data->door->door)
+		mlx_delete_texture(data->door->door);
+	if (data->dragons->dragon1)
+		mlx_delete_texture(data->dragons->dragon1);
+	if (data->dragons->dragon2)
+		mlx_delete_texture(data->dragons->dragon2);
+	if (data->dragons->dragon3)
+		mlx_delete_texture(data->dragons->dragon3);
+	if (data->knife->hand_knife)
+		mlx_delete_texture(data->knife->hand_knife);
+	if (data->knife->hand)
+		mlx_delete_texture(data->knife->hand);
+}
+
+void	free_leaks(t_data *data)
+{
+	delete_texture(data);
+	free(data->game);
+	free(data->walls);
+	free(data->donnee);
+	free(data->door);
+	free(data->map_data);
+	free(data->dragons);
+	free(data->knife);
+	free(data);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+         #
+#    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/09/22 21:10:03 by youbella         ###   ########.fr        #
+#    Updated: 2025/10/02 00:03:26 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS_BNS = bonus/cub3d_bonus.c bonus/handle_distroy_bonus.c bonus/key_moves_bonu
 		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/map_data_bonus/get_next_line_bonus.c \
 		bonus/youbella/map_data_bonus/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c \
 		bonus/youbella/draw_knife_hand_bonus.c bonus/rotation_mouse_bonus.c bonus/draw_mini_map.c bonus/check_wall_door.c \
-		bonus/draw_sky_floor_for_update.c bonus/alloc_structs_bonus.c bonus/youbella/map_data_bonus/identifiers_bonus.c \
+		bonus/draw_sky_floor_for_update.c bonus/alloc_free_bonus.c bonus/youbella/map_data_bonus/identifiers_bonus.c \
 		bonus/youbella/map_data_bonus/get_colors_fc_bonus.c bonus/youbella/map_data_bonus/identifiers2_bonus.c \
 		bonus/youbella/map_data_bonus/check_is_valid_map_bonus.c
 

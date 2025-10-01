@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 19:33:16 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:22:10 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	draw_wall_door(t_data *data, t_walls *walls)
 {
 	mlx_texture_t	*texture;
 	float			draw_start;
+	float			walls_x;
 	int				l_height;
-	int				start;
 
 	walls->perp_w_dist = 0;
 	texture = ft_texture(walls);
@@ -90,12 +90,11 @@ void	draw_wall_door(t_data *data, t_walls *walls)
 	walls->draw_end = (l_height / 2) + (HEIGHT / 2);
 	if (walls->draw_end >= HEIGHT)
 		walls->draw_end = HEIGHT - 1;
-	start = draw_start;
 	if (walls->side == 0)
-		walls->wall_x = data->pos_y + walls->perp_w_dist * walls->ray_dir_y;
+		walls_x = data->pos_y + walls->perp_w_dist * walls->ray_dir_y;
 	else
-		walls->wall_x = data->pos_x + walls->perp_w_dist * walls->ray_dir_x;
-	walls->wall_x -= floor(walls->wall_x);
-	walls->tex_x = (int)(walls->wall_x * (float)texture->width);
-	get_pixels(texture, l_height, data, start);
+		walls_x = data->pos_x + walls->perp_w_dist * walls->ray_dir_x;
+	walls_x -= floor(walls_x);
+	walls->tex_x = (int)(walls_x * (float)texture->width);
+	get_pixels(texture, l_height, data, draw_start);
 }

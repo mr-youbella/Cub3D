@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/21 16:21:39 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/01 23:33:16 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct s_walls
 	mlx_texture_t	*we_img;
 	mlx_texture_t	*ea_img;
 	float			perp_w_dist;
-	float			wall_x;
 	float			draw_end;
 	float			tex_x;
 }	t_walls;

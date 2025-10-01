@@ -6,23 +6,11 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/13 05:39:30 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:03:43 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-static void	free_leaks(t_data *data)
-{
-	free(data->game);
-	free(data->walls);
-	free(data->donnee);
-	free(data->door);
-	free(data->map_data);
-	free(data->dragons);
-	free(data->knife);
-	free(data);
-}
 
 static short	set_images_walls(t_data *data)
 {
@@ -82,6 +70,26 @@ static void	mlx(t_data *data)
 	mlx_terminate(data->game->init);
 }
 
+static bool	init_window(t_data *data)
+{
+	data->game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", false);
+	if (!data->game->init)
+		return (0);
+	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
+	if (!data->game->img)
+	{
+		mlx_terminate(data->game->init);
+		return (0);
+	}
+	if (mlx_image_to_window(data->game->init, data->game->img, 0, 0) == -1)
+	{
+		mlx_delete_image(data->game->init, data->game->img);
+		mlx_terminate(data->game->init);
+		return (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data		*data;
@@ -91,11 +99,8 @@ int	main(int argc, char **argv)
 	data = alloc_struct(NULL, NULL, NULL);
 	if (!data)
 		return (1);
-	data->game->init = mlx_init(WIDTH, HEIGHT, "Cub3d_CRAFT", false);
-	if (!data->game->init)
+	if (!init_window(data))
 		return (free_leaks(data), 1);
-	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
-	mlx_image_to_window(data->game->init, data->game->img, 0, 0);
 	data->map_data = ft_map_data(argv[1]);
 	if (!data->map_data)
 		return (free_leaks(data), 1);

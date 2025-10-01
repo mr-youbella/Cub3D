@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:09:15 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/11 17:52:45 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:05:27 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_floor_sky(t_data *data)
 		while (y < HEIGHT / 2)
 			mlx_put_pixel(data->game->img, data->walls->columns,
 				y++, data->map_data->c_color);
-		while (y < HEIGHT)
+		while (y < HEIGHT - 1)
 			mlx_put_pixel(data->game->img, data->walls->columns,
 				y++, data->map_data->f_color);
 		data->walls->columns++;
