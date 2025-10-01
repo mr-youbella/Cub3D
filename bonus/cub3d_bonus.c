@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:23:42 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:28:10 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,9 @@ static bool	init_window(t_data *data)
 		return (0);
 	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
 	if (!data->game->img)
-	{
-		mlx_terminate(data->game->init);
 		return (0);
-	}
 	if (mlx_image_to_window(data->game->init, data->game->img, 0, 0) == -1)
-	{
-		mlx_delete_image(data->game->init, data->game->img);
-		mlx_terminate(data->game->init);
 		return (0);
-	}
 	return (1);
 }
 
@@ -98,17 +91,17 @@ int	main(int argc, char **argv)
 	data = alloc_struct(NULL, NULL, NULL);
 	if (!data)
 		return (1);
-	if (!init_window(data))
-		return (free_leaks(data), 1);
 	data->map_data = ft_map_data(argv[1]);
 	if (!data->map_data)
-		return (free_leaks(data), 1);
+		return (free_leaks(data, 0), 1);
+	if (!init_window(data))
+		return (free_leaks(data, 1), 1);
 	player_position(data);
 	if (!set_images(data))
-		return (free_leaks(data), 1);
+		return (free_leaks(data, 1), 1);
 	data->dragons->frame_speed = 20;
 	data->dragons->height_dragon = 100;
 	update(data, 0);
 	mlx(data);
-	free_leaks(data);
+	free_leaks(data, 1);
 }

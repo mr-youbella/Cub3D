@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:04:13 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:27:36 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ typedef struct s_data
 }	t_data;
 
 t_data		*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife);
-void		free_leaks(t_data *data);
+void		free_leaks(t_data *data, bool is_mlx);
 
 // WKANNOUF
 void		update(t_data *data, float camera_x);
