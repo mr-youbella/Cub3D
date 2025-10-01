@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/01 23:50:52 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:22:31 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	free_leaks(t_data *data, bool is_all)
 		mlx_delete_texture(data->walls->ea_img);
 		mlx_delete_texture(data->walls->we_img);
 		mlx_delete_image(data->game->init, data->game->img);
+		mlx_terminate(data->game->init);
 	}
 	free(data->game);
 	free(data->walls);
@@ -67,11 +68,10 @@ static short	init_window(t_data *data)
 		return (0);
 	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
 	if (!data->game->img)
-		return (mlx_terminate(data->game->init), 0);
+		return (0);
 	window = mlx_image_to_window(data->game->init, data->game->img, 0, 0);
 	if (window == -1)
-		return (mlx_delete_image(data->game->init, data->game->img),
-			mlx_terminate(data->game->init), 0);
+		return (0);
 	return (1);
 }
 
@@ -129,6 +129,5 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(data->game->init, destroy, data->game);
 	mlx_close_hook(data->game->init, close_window, data->game);
 	mlx_loop(data->game->init);
-	mlx_terminate(data->game->init);
 	free_leaks(data, 1);
 }

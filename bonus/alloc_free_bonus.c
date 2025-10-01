@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:43:02 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:03:59 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:23:47 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ static void	delete_texture(t_data *data)
 void	free_leaks(t_data *data)
 {
 	delete_texture(data);
+	mlx_delete_image(data->game->init, data->game->img);
+	mlx_terminate(data->game->init);
 	free(data->game);
 	free(data->walls);
 	free(data->donnee);

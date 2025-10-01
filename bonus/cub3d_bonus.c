@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:03:43 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:23:42 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	mlx(t_data *data)
 	mlx_loop_hook(data->game->init, destroy, data->game);
 	mlx_close_hook(data->game->init, close_window, data->game);
 	mlx_loop(data->game->init);
-	mlx_terminate(data->game->init);
 }
 
 static bool	init_window(t_data *data)
