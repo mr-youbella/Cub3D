@@ -6,12 +6,12 @@
 #    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/10/02 00:03:26 by youbella         ###   ########.fr        #
+#    Updated: 2025/10/02 05:12:20 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc 
-FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math #-fsanitize=address -g
 
 NAME = cub3D
 NAME_BNS = cub3D_bonus
@@ -69,13 +69,15 @@ print:
 $(NAME): $(OBJS)
 		@printf "\033[34mWaiting...\n\033[0m"
 		@make -C libft 1> /dev/null
+		@make -C AllocFreeCraft 1> /dev/null
 		@printf "\033[34mWaiting...\n\033[0m"
-		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a -o $(NAME)
+		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a AllocFreeCraft/allocfreecraft.a -o $(NAME)
 $(NAME_BNS): $(OBJS_BNS)
 		@printf "\033[34mWaiting...\n\033[0m"
 		@make -C libft 1> /dev/null
+		@make -C AllocFreeCraft 1> /dev/null
 		@printf "\033[34mWaiting...\n\033[0m"
-		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a -o $(NAME_BNS)
+		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS_BNS) libft/libft.a AllocFreeCraft/allocfreecraft.a -o $(NAME_BNS)
 
 mandatory/%.o: mandatory/%.c mandatory/cub3d.h
 	@$(CC) $(FLAGS) -c $< -o $@
@@ -90,9 +92,11 @@ clean:
 fclean: clean
 		@printf "\033[31mThe game has been deleted.\033[0m\n"
 		@make fclean -C libft
+		@make fclean -C AllocFreeCraft
 		@rm -f $(NAME) $(NAME_BNS)
 
 re: fclean all
 		@make re -C libft
+		@make re -C AllocFreeCraft
 
 .PHONY: clean

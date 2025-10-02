@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:27:36 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:11:29 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "../.MLX42.h"
+# include "../AllocFreeCraft/allocfreecraft.h"
 
 # define WIDTH 1024
 # define HEIGHT 640
@@ -176,6 +177,5 @@ bool		check_map(t_map_data *map_data);
 bool		identifiers_colors(t_map_data *map_data,
 				char **line, char *identifier, size_t i);
 bool		is_empty(char *line);
-void		draw_map_terminal(char **map, int pos_y, int pos_x, int j);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:02:45 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/09/13 05:39:15 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 03:56:53 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,4 @@ void	update(t_data *data, float camera_x)
 	}
 	draw_dragons(data->game, data->dragons, data->knife);
 	draw_map(data);
-	draw_map_terminal(data->map_data->map,
-		(int)data->pos_y, (int)data->pos_x, 0);
 }

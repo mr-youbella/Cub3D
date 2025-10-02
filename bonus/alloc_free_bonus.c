@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:43:02 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:27:23 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:04:08 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,29 +52,25 @@ static t_data	*alloc_struct2(void)
 t_data	*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife)
 {
 	t_data		*data;
-	t_map_data	*map_data;
 
 	data = alloc_struct2();
 	if (!data)
 		return (NULL);
-	map_data = malloc(sizeof(t_map_data));
-	if (!map_data)
-		return (free_s(data), NULL);
-	ft_memset(map_data, 0, sizeof(t_map_data));
 	door = malloc(sizeof(t_door));
 	if (!door)
-		return (free_s(data), free(map_data), NULL);
+		return (free_s(data), NULL);
 	ft_memset(door, 0, sizeof(t_door));
 	dragons = malloc(sizeof(t_dragons));
 	if (!dragons)
-		return (free_s(data), free(map_data), free(door), NULL);
+		return (free_s(data), free(door), NULL);
 	ft_memset(dragons, 0, sizeof(t_dragons));
 	knife = malloc(sizeof(t_knife));
 	if (!knife)
-		return (free_s(data), free(map_data), free(door), free(dragons), NULL);
+		return (free_s(data), free(door), free(dragons), NULL);
 	ft_memset(knife, 0, sizeof(t_knife));
-	1 && (data->map_data = map_data, data->door = door);
-	1 && (data->dragons = dragons, data->knife = knife);
+	data->door = door;
+	data->dragons = dragons;
+	data->knife = knife;
 	return (data);
 }
 

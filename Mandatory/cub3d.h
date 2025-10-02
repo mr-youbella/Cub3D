@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/01 23:33:16 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:11:53 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "../.MLX42.h"
+# include "../AllocFreeCraft/allocfreecraft.h"
 
 typedef struct s_game
 {
@@ -102,7 +103,7 @@ void		player_position(t_data *player);
 char		*get_next_line(int fd);
 void		draw_wall_door(t_data *data, t_walls *walls);
 t_map_data	*ft_map_data(char *path);
-short		get_hexa_colors(t_map_data *map_data);
+bool		get_hexa_colors(t_map_data *map_data);
 bool		get_identifiers(int fd, char **line, t_map_data *map_data);
 bool		identifiers(t_map_data *map_data,
 				char **line, char *identifier, size_t i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors_fc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:50:08 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/21 16:15:46 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 04:34:17 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ bool	identifiers_colors(t_map_data *map_data,
 	{
 		if (!ft_strncmp(&(*line)[i], "F ", 2)
 			|| !ft_strncmp(&(*line)[i], "F\t", 2))
+		{
 			1 && (map_data->str_f_color
 				= ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1),
 					identifier[4] = 'X');
+			allocfreecraft(0, map_data->str_f_color, 2);
+		}
 		else
 			return (false);
 	}
@@ -32,6 +35,7 @@ bool	identifiers_colors(t_map_data *map_data,
 		{
 			map_data->str_c_color
 				= ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1);
+			allocfreecraft(0, map_data->str_c_color, 2);
 			identifier[5] = 'X';
 		}
 		else
@@ -56,6 +60,7 @@ static bool	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_f_color[j] == ' ' || map_data->str_f_color[j] == '\t')
 		j--;
 	map_data->str_f_color = ft_substr(map_data->str_f_color, i, j - i + 1);
+	allocfreecraft(0, map_data->str_f_color, 2);
 	i = 1;
 	while (map_data->str_c_color[i] == ' ' || map_data->str_c_color[i] == '\t')
 		i++;
@@ -65,6 +70,7 @@ static bool	check_colors_is_found(t_map_data *map_data)
 	while (map_data->str_c_color[j] == ' ' || map_data->str_c_color[j] == '\t')
 		j--;
 	map_data->str_c_color = ft_substr(map_data->str_c_color, i, j - i + 1);
+	allocfreecraft(0, map_data->str_c_color, 2);
 	return (true);
 }
 
@@ -76,6 +82,7 @@ static short	check_syntax_f_color(t_map_data *map_data,
 	split = ft_split(map_data->str_f_color, ',');
 	if (!split)
 		return (ft_putstr_fd("Error\nF color not found.\n", 2), 0);
+	allocfreecraft(0, split, 3);
 	while (split[i])
 	{
 		if (i == 3)
@@ -106,6 +113,7 @@ static short	check_syntax_c_color(t_map_data *map_data,
 	split = ft_split(map_data->str_c_color, ',');
 	if (!split)
 		return (ft_putstr_fd("Error\nC color not found.\n", 2), 0);
+	allocfreecraft(0, split, 3);
 	while (split[i])
 	{
 		if (i == 3)
@@ -128,7 +136,7 @@ static short	check_syntax_c_color(t_map_data *map_data,
 	return (1);
 }
 
-short	get_hexa_colors(t_map_data *map_data)
+bool	get_hexa_colors(t_map_data *map_data)
 {
 	if (!check_colors_is_found(map_data))
 		return (0);

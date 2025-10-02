@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identifiers_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:53:26 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/21 16:19:51 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 04:31:54 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	identifiers_ws(t_map_data *map_data,
 			|| !ft_strncmp(&(*line)[i], "WE\t", 3))
 		{
 			map_data->we_img = ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1);
-			identifier[2] = 'X';
+			1 && (allocfreecraft(0, map_data->we_img, 2), identifier[2] = 'X');
 		}
 		else
 			return (false);
@@ -32,7 +32,7 @@ static bool	identifiers_ws(t_map_data *map_data,
 			|| !ft_strncmp(&(*line)[i], "EA\t", 3))
 		{
 			map_data->ea_img = ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1);
-			identifier[3] = 'X';
+			1 && (allocfreecraft(0, map_data->ea_img, 2), identifier[3] = 'X');
 		}
 		else
 			return (false);
@@ -49,7 +49,7 @@ static bool	identifiers_news(t_map_data *map_data,
 			|| !ft_strncmp(&(*line)[i], "NO\t", 3))
 		{
 			map_data->no_img = ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1);
-			identifier[0] = 'X';
+			1 && (allocfreecraft(0, map_data->no_img, 2), identifier[0] = 'X');
 		}
 		else
 			return (false);
@@ -60,7 +60,7 @@ static bool	identifiers_news(t_map_data *map_data,
 			|| !ft_strncmp(&(*line)[i], "SO\t", 3))
 		{
 			map_data->so_img = ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1);
-			identifier[1] = 'X';
+			1 && (allocfreecraft(0, map_data->so_img, 2), identifier[1] = 'X');
 		}
 		else
 			return (false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/21 16:17:03 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:06:25 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static bool	add_spaces_in_map(t_map_data *map_data,
 		if (len_row < long_row)
 		{
 			new_row = malloc(len_row + (long_row - len_row) + 1);
+			allocfreecraft(0, new_row, 2);
 			if (!new_row)
 				return (false);
 			while (map_data->map[i][j])
@@ -84,6 +85,7 @@ static bool	get_lines_map(t_map_data *map_data, char **line, int fd)
 		while (*line && ((*line)[0] == '\n' || is_empty(*line)))
 		{
 			*line = get_next_line(fd);
+			allocfreecraft(0, *line, 2);
 			if (*line && !is_empty(*line))
 			{
 				ft_putstr_fd("Error\nError: Empty line in map!\n", 2);
@@ -91,9 +93,12 @@ static bool	get_lines_map(t_map_data *map_data, char **line, int fd)
 			}
 		}
 		join_line = ft_strjoin(join_line, *line);
+		allocfreecraft(0, join_line, 2);
 		*line = get_next_line(fd);
+		allocfreecraft(0, *line, 2);
 	}
 	split = ft_split(join_line, '\n');
+	allocfreecraft(0, split, 3);
 	if (!split)
 		return (ft_putstr_fd("Error\nMap no found\n", 2), 0);
 	map_data->map = split;
@@ -111,19 +116,20 @@ t_map_data	*ft_map_data(char *path)
 		return (ft_putstr_fd("Error\nFile not open!\n", 2), NULL);
 	map_data = malloc(sizeof(t_map_data));
 	if (!map_data)
-		return (NULL);
+		return (close(fd), NULL);
 	ft_memset(map_data, 0, sizeof(t_map_data));
 	if (!get_identifiers(fd, &line, map_data))
-		return (free(map_data), NULL);
+		return (close(fd), free(map_data), NULL);
 	while (line)
 	{
 		if (line[0] != '\n' && !is_empty(line))
 			break ;
 		line = get_next_line(fd);
+		allocfreecraft(0, line, 2);
 	}
 	if (!get_lines_map(map_data, &line, fd))
-		return (free(map_data), NULL);
+		return (close(fd), free(map_data), NULL);
 	if (!add_spaces_in_map(map_data, 0, 0, 0) || !check_map(map_data))
-		return (free(map_data), NULL);
-	return (map_data);
+		return (close(fd), free(map_data), NULL);
+	return (close(fd), map_data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identifiers2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:47:09 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/21 16:16:40 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 03:54:56 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,20 @@ static bool	identifiers_cub(t_map_data *map_data, int fd, char **line)
 		if (*line[0] == '\n' || is_empty(*line))
 		{
 			*line = get_next_line(fd);
+			allocfreecraft(0, *line, 2);
 			continue ;
 		}
 		i = 0;
 		while ((*line)[i] == ' ' || (*line)[i] == '\t')
 			i++;
 		if (!identifiers(map_data, line, identifier, i))
-			return (false);
+			return (free(identifier), false);
 		*line = get_next_line(fd);
+		allocfreecraft(0, *line, 2);
 		if (mark_identifiers(identifier))
 			break ;
 	}
+	free(identifier);
 	if (!*line)
 		return (false);
 	return (true);
@@ -69,6 +72,7 @@ static bool	get_we_ea_image(t_map_data *map_data, size_t i, size_t j)
 	while (map_data->we_img[j] == ' ' || map_data->we_img[j] == '\t')
 		j--;
 	map_data->we_img = ft_substr(map_data->we_img, i, j - i + 1);
+	allocfreecraft(0, map_data->we_img, 2);
 	i = 2;
 	while (map_data->ea_img[i] == ' ' || map_data->ea_img[i] == '\t')
 		i++;
@@ -81,6 +85,7 @@ static bool	get_we_ea_image(t_map_data *map_data, size_t i, size_t j)
 	while (map_data->ea_img[j] == ' ' || map_data->ea_img[j] == '\t')
 		j--;
 	map_data->ea_img = ft_substr(map_data->ea_img, i, j - i + 1);
+	allocfreecraft(0, map_data->ea_img, 2);
 	return (true);
 }
 
@@ -98,6 +103,7 @@ static bool	get_name_images(t_map_data *map_data)
 	while (map_data->no_img[j] == ' ' || map_data->no_img[j] == '\t')
 		j--;
 	map_data->no_img = ft_substr(map_data->no_img, i, j - i + 1);
+	allocfreecraft(0, map_data->no_img, 2);
 	i = 2;
 	while (map_data->so_img[i] == ' ' || map_data->so_img[i] == '\t')
 		i++;
@@ -107,6 +113,7 @@ static bool	get_name_images(t_map_data *map_data)
 	while (map_data->so_img[j] == ' ' || map_data->so_img[j] == '\t')
 		j--;
 	map_data->so_img = ft_substr(map_data->so_img, i, j - i + 1);
+	allocfreecraft(0, map_data->so_img, 2);
 	if (!get_we_ea_image(map_data, 0, 0))
 		return (false);
 	return (true);
@@ -115,6 +122,7 @@ static bool	get_name_images(t_map_data *map_data)
 bool	get_identifiers(int fd, char **line, t_map_data *map_data)
 {
 	*line = get_next_line(fd);
+	allocfreecraft(0, *line, 2);
 	if (!identifiers_cub(map_data, fd, line))
 		return (false);
 	if (!get_name_images(map_data))
