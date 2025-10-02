@@ -6,7 +6,7 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:09:15 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/02 03:36:02 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/02 03:42:23 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void perp_wall_dist_line_height(t_data *data)
 	data->walls->l_height = (int)(HEIGHT / data->walls->perp_w_dist);
 }
 
-static void drawing_columns(t_data *data)
+static void drawing_wall(t_data *data)
 {
 	float draw_start;
 
