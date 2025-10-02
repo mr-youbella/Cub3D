@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
+#    By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2025/10/02 05:12:20 by youbella         ###   ########.fr        #
+=======
+#    Updated: 2025/10/02 03:38:42 by wkannouf         ###   ########.fr        #
+>>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +23,7 @@ NAME_BNS = cub3D_bonus
 SRCS = mandatory/cub3d.c mandatory/handle_distroy.c mandatory/key_moves.c mandatory/rotation_key.c mandatory/update_Player.c \
 		mandatory/youbella/walls.c mandatory/youbella/parse_player.c mandatory/youbella/map_data/get_next_line.c mandatory/youbella/map_data/map_data.c \
 		mandatory/youbella/map_data/identifiers.c mandatory/youbella/map_data/get_colors_fc.c mandatory/youbella/map_data/identifiers2.c \
-		mandatory/youbella/map_data/check_is_valid_map.c
+		mandatory/youbella/map_data/check_is_valid_map.c mandatory/draw_floor_sky.c
 SRCS_BNS = bonus/cub3d_bonus.c bonus/handle_distroy_bonus.c bonus/key_moves_bonus.c bonus/rotation_key_bonus.c bonus/update_Player_bonus.c \
 		bonus/youbella/walls_bonus.c bonus/youbella/parse_player_bonus.c bonus/youbella/map_data_bonus/get_next_line_bonus.c \
 		bonus/youbella/map_data_bonus/map_data_bonus.c bonus/youbella/key_door_bonus.c bonus/youbella/draw_dragon_bonus.c \

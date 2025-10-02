@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:22:31 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 03:33:00 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	free_leaks(t_data *data, bool is_all)
 	free(data->game);
 	free(data->walls);
 	free(data->map_data);
-	free(data->donne);
+	free(data->donnee);
 	free(data);
 }
 
@@ -35,7 +35,7 @@ static t_data	*alloc_struct(void)
 	t_game		*game;
 	t_walls		*walls;
 	t_data		*data;
-	t_donnee	*donnee;
+	t_donnee	*donneee;
 
 	game = malloc(sizeof(t_game));
 	if (!game)
@@ -45,17 +45,17 @@ static t_data	*alloc_struct(void)
 	if (!walls)
 		return (free(game), NULL);
 	ft_memset(walls, 0, sizeof(t_walls));
-	donnee = malloc(sizeof(t_donnee));
-	if (!donnee)
+	donneee = malloc(sizeof(t_donnee));
+	if (!donneee)
 		return (free(game), free(walls), NULL);
-	ft_memset(donnee, 0, sizeof(t_donnee));
+	ft_memset(donneee, 0, sizeof(t_donnee));
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (free(game), free(walls), free(donnee), NULL);
+		return (free(game), free(walls), free(donneee), NULL);
 	ft_memset(data, 0, sizeof(t_data));
 	data->game = game;
 	data->walls = walls;
-	data->donne = donnee;
+	data->donnee = donneee;
 	return (data);
 }
 

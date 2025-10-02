@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/02 05:11:53 by youbella         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/02 03:37:40 by wkannouf         ###   ########.fr       */
+>>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +79,7 @@ typedef struct s_walls
 	float			perp_w_dist;
 	float			draw_end;
 	float			tex_x;
+	int				l_height;
 }	t_walls;
 
 typedef struct s_data
@@ -88,11 +93,12 @@ typedef struct s_data
 	t_game		*game;
 	t_walls		*walls;
 	t_map_data	*map_data;
-	t_donnee	*donne;
+	t_donnee		*donnee;
 }	t_data;
 
 // WKANNOUF
-void		update(t_data *player);
+void		update(t_data *data);
+void		draw_floor_sky(t_data *data);
 void		check_key_moves(void *param);
 void		check_fleche_key(void *arg);
 void		destroy(void *arg);
