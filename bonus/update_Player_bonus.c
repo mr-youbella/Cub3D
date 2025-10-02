@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   update_Player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:02:45 by wkannouf          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/02 03:56:53 by youbella         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/02 03:42:41 by wkannouf         ###   ########.fr       */
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
+/*   Updated: 2025/10/02 05:17:49 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d_bonus.h"
 
@@ -109,14 +106,9 @@ void update(t_data *data, float camera_x)
 		start_dda_and_dir_step_of_ray(data);
 		dda(data);
 		perp_wall_dist_line_height(data);
-		drawing_columns(data);
+		drawing_wall_door(data);
 		data->walls->columns++;
 	}
 	draw_dragons(data->game, data->dragons, data->knife);
 	draw_map(data);
-<<<<<<< HEAD
-=======
-	draw_map_terminal(data->map_data->map,
-					  (int)data->pos_y, (int)data->pos_x, 0);
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
 }

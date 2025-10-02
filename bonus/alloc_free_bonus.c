@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_free_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:43:02 by youbella          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/02 05:04:08 by youbella         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/02 03:32:46 by wkannouf         ###   ########.fr       */
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
+/*   Updated: 2025/10/02 05:18:22 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d_bonus.h"
 
@@ -55,12 +52,7 @@ static t_data *alloc_struct2(void)
 
 t_data *alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife)
 {
-<<<<<<< HEAD
 	t_data		*data;
-=======
-	t_data *data;
-	t_map_data *map_data;
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
 
 	data = alloc_struct2();
 	if (!data)

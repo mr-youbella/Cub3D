@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/02 05:11:53 by youbella         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/02 03:37:40 by wkannouf         ###   ########.fr       */
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
+/*   Updated: 2025/10/02 05:15:00 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H

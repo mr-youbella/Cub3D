@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_Player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:09:15 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/02 03:42:23 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:15:45 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void update(t_data *data)
 		start_dda_and_dir_step_of_ray(data);
 		dda(data);
 		perp_wall_dist_line_height(data);
-		drawing_columns(data);
+		drawing_wall(data);
 		data->walls->columns++;
 	}
 }

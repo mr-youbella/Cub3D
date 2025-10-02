@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 04:44:40 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 05:21:35 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,8 @@ static bool	init_window(t_data *data)
 	return (1);
 }
 
-void	f()
-{
-	system("leaks cub3D_bonus");
-}
-
 int	main(int argc, char **argv)
 {
-	atexit(f);
 	t_data		*data;
 
 	if (argc != 2)

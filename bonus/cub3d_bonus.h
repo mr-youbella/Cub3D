@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/10/02 05:11:29 by youbella         ###   ########.fr       */
-=======
-/*   Updated: 2025/10/02 03:32:46 by wkannouf         ###   ########.fr       */
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
+/*   Updated: 2025/10/02 05:16:51 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_BONUS_H
 #define CUB3D_BONUS_H
 
-<<<<<<< HEAD
 # include <math.h>
 # include <libc.h>
 # include <stdio.h>
@@ -27,16 +23,6 @@
 # include "../libft/libft.h"
 # include "../.MLX42.h"
 # include "../AllocFreeCraft/allocfreecraft.h"
-=======
-#include <math.h>
-#include <libc.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include "../libft/libft.h"
-#include "../.MLX42.h"
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
 
 #define WIDTH 1024
 #define HEIGHT 640
@@ -170,7 +156,6 @@ short is_blocked(t_data *data, float x, float y);
 void draw_floor_sky(t_data *data);
 
 // YOUBELLA
-<<<<<<< HEAD
 void		player_position(t_data *player);
 t_map_data	*ft_map_data(char *path);
 char		*get_next_line(int fd);
@@ -193,30 +178,5 @@ bool		check_map(t_map_data *map_data);
 bool		identifiers_colors(t_map_data *map_data,
 				char **line, char *identifier, size_t i);
 bool		is_empty(char *line);
-=======
-void player_position(t_data *player);
-t_map_data *ft_map_data(char *path);
-char *get_next_line(int fd);
-void draw_wall_door(t_game *game, t_data *player,
-					t_walls *walls, short is_door);
-void draw_dragons(t_game *game, t_dragons *dragons, t_knife *knife);
-void key_door(t_data *data);
-void key_knife(mouse_key_t button, action_t action,
-			   modifier_key_t mods, void *arg);
-void draw_hand_knife(t_game *game, t_knife *knife);
-void draw_wall_door(t_game *game, t_data *data,
-					t_walls *walls, short is_door);
-void move_dragon(t_data *data);
-bool get_hexa_colors(t_map_data *map_data);
-bool get_identifiers(int fd, char **line, t_map_data *map_data);
-bool identifiers(t_map_data *map_data,
-				 char **line, char *identifier, size_t i);
-bool is_valid_map(char **map, size_t i, size_t j);
-bool check_map(t_map_data *map_data);
-bool identifiers_colors(t_map_data *map_data,
-						char **line, char *identifier, size_t i);
-bool is_empty(char *line);
-void draw_map_terminal(char **map, int pos_y, int pos_x, int j);
->>>>>>> 9dbcd03e1b54e77d9988e25800e72e864b712bb1
 
 #endif
