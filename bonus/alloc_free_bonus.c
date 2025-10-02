@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_free_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:43:02 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 00:27:23 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/02 03:32:46 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-static void	free_s(t_data *data)
+static void free_s(t_data *data)
 {
 	free(data->game);
 	free(data->walls);
-	free(data->donnee);
+	free(data->donneee);
 	free(data);
 }
 
-static t_data	*alloc_struct2(void)
+static t_data *alloc_struct2(void)
 {
-	t_game		*game;
-	t_walls		*walls;
-	t_data		*data;
-	t_donnee	*donnee;
+	t_game *game;
+	t_walls *walls;
+	t_data *data;
+	t_donneee *donneee;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -39,20 +39,20 @@ static t_data	*alloc_struct2(void)
 	if (!walls)
 		return (free(data), free(game), NULL);
 	ft_memset(walls, 0, sizeof(t_walls));
-	donnee = malloc(sizeof(t_donnee));
-	if (!donnee)
+	donneee = malloc(sizeof(t_donneee));
+	if (!donneee)
 		return (free(data), free(game), free(walls), NULL);
-	ft_memset(donnee, 0, sizeof(t_donnee));
+	ft_memset(donneee, 0, sizeof(t_donneee));
 	data->game = game;
 	data->walls = walls;
-	data->donnee = donnee;
+	data->donneee = donneee;
 	return (data);
 }
 
-t_data	*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife)
+t_data *alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife)
 {
-	t_data		*data;
-	t_map_data	*map_data;
+	t_data *data;
+	t_map_data *map_data;
 
 	data = alloc_struct2();
 	if (!data)
@@ -78,7 +78,7 @@ t_data	*alloc_struct(t_door *door, t_dragons *dragons, t_knife *knife)
 	return (data);
 }
 
-static void	delete_texture(t_data *data)
+static void delete_texture(t_data *data)
 {
 	if (data->walls->no_img)
 		mlx_delete_texture(data->walls->no_img);
@@ -102,7 +102,7 @@ static void	delete_texture(t_data *data)
 		mlx_delete_texture(data->knife->hand);
 }
 
-void	free_leaks(t_data *data, bool is_mlx)
+void free_leaks(t_data *data, bool is_mlx)
 {
 	delete_texture(data);
 	if (is_mlx)
@@ -112,7 +112,7 @@ void	free_leaks(t_data *data, bool is_mlx)
 	}
 	free(data->game);
 	free(data->walls);
-	free(data->donnee);
+	free(data->donneee);
 	free(data->door);
 	free(data->map_data);
 	free(data->dragons);
