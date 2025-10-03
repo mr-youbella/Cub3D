@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/02 05:15:00 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/03 19:43:14 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_walls
 	float			draw_end;
 	float			tex_x;
 	int				l_height;
+	float			draw_start;
 }	t_walls;
 
 typedef struct s_data

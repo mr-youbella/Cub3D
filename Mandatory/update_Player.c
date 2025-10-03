@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_Player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:09:15 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/02 05:15:45 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/03 19:43:48 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,9 @@ static void perp_wall_dist_line_height(t_data *data)
 
 static void drawing_wall(t_data *data)
 {
-	float draw_start;
-
-	draw_start = -data->walls->l_height / 2 + HEIGHT / 2;
-	if (draw_start < 0)
-		draw_start = 0;
+	data->walls->draw_start = -data->walls->l_height / 2 + HEIGHT / 2;
+	if (data->walls->draw_start < 0)
+		data->walls->draw_start = 0;
 	data->walls->draw_end = (data->walls->l_height / 2) + (HEIGHT / 2);
 	if (data->walls->draw_end >= HEIGHT)
 		data->walls->draw_end = HEIGHT - 1;
