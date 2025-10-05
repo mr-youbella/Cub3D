@@ -6,10 +6,9 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/03 19:43:14 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/05 18:45:52 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -91,7 +90,7 @@ typedef struct s_data
 	t_game		*game;
 	t_walls		*walls;
 	t_map_data	*map_data;
-	t_donnee		*donnee;
+	t_donnee	*donnee;
 }	t_data;
 
 // WKANNOUF

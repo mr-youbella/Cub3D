@@ -6,37 +6,41 @@
 /*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:09:15 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/03 19:43:48 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/05 18:12:14 by wkannouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void start_dda_and_dir_step_of_ray(t_data *data)
+static void	start_dda_and_dir_step_of_ray(t_data *data)
 {
 	if (data->walls->ray_dir_x < 0)
 	{
 		data->walls->step_x = -1;
-		data->donnee->side_dist_x = (data->pos_x - data->walls->map_x) * data->donnee->delta_dist_x;
+		data->donnee->side_dist_x = (data->pos_x - data->walls->map_x)
+			* data->donnee->delta_dist_x;
 	}
 	else
 	{
 		data->walls->step_x = 1;
-		data->donnee->side_dist_x = (data->walls->map_x + 1 - data->pos_x) * data->donnee->delta_dist_x;
+		data->donnee->side_dist_x = (data->walls->map_x + 1 - data->pos_x)
+			* data->donnee->delta_dist_x;
 	}
 	if (data->walls->ray_dir_y < 0)
 	{
 		data->walls->step_y = -1;
-		data->donnee->side_dist_y = (data->pos_y - data->walls->map_y) * data->donnee->delta_dist_y;
+		data->donnee->side_dist_y = (data->pos_y - data->walls->map_y)
+			* data->donnee->delta_dist_y;
 	}
 	else
 	{
 		data->walls->step_y = 1;
-		data->donnee->side_dist_y = (data->walls->map_y + 1 - data->pos_y) * data->donnee->delta_dist_y;
+		data->donnee->side_dist_y = (data->walls->map_y + 1 - data->pos_y)
+			* data->donnee->delta_dist_y;
 	}
 }
 
-static void dda(t_data *data)
+static void	dda(t_data *data)
 {
 	while (data->donnee->wall == 48)
 	{
@@ -57,16 +61,18 @@ static void dda(t_data *data)
 	}
 }
 
-static void perp_wall_dist_line_height(t_data *data)
+static void	perp_wall_dist_line_height(t_data *data)
 {
 	if (data->walls->side == 0 && data->walls->ray_dir_x != 0)
-		data->walls->perp_w_dist = (data->walls->map_x - data->pos_x + (1 - data->walls->step_x) / 2) / data->walls->ray_dir_x;
+		data->walls->perp_w_dist = (data->walls->map_x - data->pos_x
+				+ (1 - data->walls->step_x) / 2) / data->walls->ray_dir_x;
 	else if (data->walls->side == 1 && data->walls->ray_dir_y != 0)
-		data->walls->perp_w_dist = (data->walls->map_y - data->pos_y + (1 - data->walls->step_y) / 2) / data->walls->ray_dir_y;
+		data->walls->perp_w_dist = (data->walls->map_y - data->pos_y
+				+ (1 - data->walls->step_y) / 2) / data->walls->ray_dir_y;
 	data->walls->l_height = (int)(HEIGHT / data->walls->perp_w_dist);
 }
 
-static void drawing_wall(t_data *data)
+static void	drawing_wall(t_data *data)
 {
 	data->walls->draw_start = -data->walls->l_height / 2 + HEIGHT / 2;
 	if (data->walls->draw_start < 0)
@@ -78,7 +84,7 @@ static void drawing_wall(t_data *data)
 		draw_wall_door(data, data->walls);
 }
 
-void update(t_data *data)
+void	update(t_data *data)
 {
 	float	camera_x;
 
