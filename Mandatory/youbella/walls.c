@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:32:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/01 22:22:10 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:18:05 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	put_pixels(mlx_texture_t *texture,
 }
 
 static void	get_pixels(mlx_texture_t *texture,
-					int l_height, t_data *data, int start)
+					int l_height, t_data *data)
 {
 	int	d;
 	int	index;
@@ -39,13 +39,13 @@ static void	get_pixels(mlx_texture_t *texture,
 	if ((data->walls->side == 0 && data->walls->ray_dir_x > 0)
 		|| (data->walls->side == 1 && data->walls->ray_dir_y < 0))
 		data->walls->tex_x = texture->width - data->walls->tex_x - 1;
-	while (start < data->walls->draw_end)
+	while (data->walls->draw_start < data->walls->draw_end)
 	{
-		d = (start * 256 - HEIGHT * 128 + l_height * 128);
+		d = (data->walls->draw_start * 256 - HEIGHT * 128 + l_height * 128);
 		tex_y = ((d * texture->height) / l_height) / 256;
 		index = (tex_y * texture->width + data->walls->tex_x) * 4;
-		put_pixels(texture, data, start, index);
-		start++;
+		put_pixels(texture, data, data->walls->draw_start, index);
+		data->walls->draw_start++;
 	}
 }
 
@@ -63,38 +63,17 @@ static mlx_texture_t	*ft_texture(t_walls *walls)
 	return (walls->so_img);
 }
 
-static void	prep_value(t_data *data, t_walls *walls)
-{
-	if (walls->side == 0 && walls->ray_dir_x != 0)
-		walls->perp_w_dist = (walls->map_x - data->pos_x
-				+ (1 - walls->step_x) / 2) / walls->ray_dir_x;
-	else if (walls->side == 1 && walls->ray_dir_y != 0)
-		walls->perp_w_dist = (walls->map_y - data->pos_y
-				+ (1 - walls->step_y) / 2) / walls->ray_dir_y;
-}
-
 void	draw_wall_door(t_data *data, t_walls *walls)
 {
 	mlx_texture_t	*texture;
-	float			draw_start;
 	float			walls_x;
-	int				l_height;
 
-	walls->perp_w_dist = 0;
 	texture = ft_texture(walls);
-	prep_value(data, walls);
-	l_height = (int)(HEIGHT / walls->perp_w_dist);
-	draw_start = -l_height / 2 + HEIGHT / 2;
-	if (draw_start < 0)
-		draw_start = 0;
-	walls->draw_end = (l_height / 2) + (HEIGHT / 2);
-	if (walls->draw_end >= HEIGHT)
-		walls->draw_end = HEIGHT - 1;
 	if (walls->side == 0)
 		walls_x = data->pos_y + walls->perp_w_dist * walls->ray_dir_y;
 	else
 		walls_x = data->pos_x + walls->perp_w_dist * walls->ray_dir_x;
 	walls_x -= floor(walls_x);
 	walls->tex_x = (int)(walls_x * (float)texture->width);
-	get_pixels(texture, l_height, data, draw_start);
+	get_pixels(texture, data->walls->l_height, data);
 }

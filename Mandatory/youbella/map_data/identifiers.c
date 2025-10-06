@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:53:26 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 03:55:13 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:37:12 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	identifiers(t_map_data *map_data,
 		if (!identifiers_news(map_data, line, identifier, i))
 			return (false);
 	}
-	else if (!identifiers_colors(map_data, line, identifier, i))
+	else if (!identifiers_colors(map_data, line, identifier))
 		return (false);
 	return (true);
 }

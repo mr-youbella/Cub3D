@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:51 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/05 18:32:05 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:40:48 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ bool		identifiers(t_map_data *map_data,
 bool		is_valid_map(char **map, size_t i, size_t j);
 bool		check_map(t_map_data *map_data);
 bool		identifiers_colors(t_map_data *map_data,
-				char **line, char *identifier, size_t i);
+				char **line, char *identifier);
 bool		is_empty(char *line);
 
 #endif

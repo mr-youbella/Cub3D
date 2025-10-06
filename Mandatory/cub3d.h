@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:13 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/05 18:45:52 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:23:56 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ bool		identifiers(t_map_data *map_data,
 bool		is_valid_map(char **map, size_t i, size_t j);
 bool		check_map(t_map_data *map_data);
 bool		identifiers_colors(t_map_data *map_data,
-				char **line, char *identifier, size_t i);
+				char **line, char *identifier);
 bool		is_empty(char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:49:49 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 04:41:59 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:30:25 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ static bool	get_lines_map(t_map_data *map_data, char **line, int fd)
 	{
 		while (*line && ((*line)[0] == '\n' || is_empty(*line)))
 		{
-			*line = get_next_line(fd);
-			allocfreecraft(0, *line, 2);
+			1 && (*line = get_next_line(fd), allocfreecraft(0, *line, 2));
 			if (*line && !is_empty(*line))
 			{
 				ft_putstr_fd("Error\nError: Empty line in map!\n", 2);
@@ -101,8 +100,7 @@ static bool	get_lines_map(t_map_data *map_data, char **line, int fd)
 	allocfreecraft(0, split, 3);
 	if (!split)
 		return (ft_putstr_fd("Error\nMap no found\n", 2), 0);
-	map_data->map = split;
-	return (true);
+	return (map_data->map = split, true);
 }
 
 t_map_data	*ft_map_data(char *path)

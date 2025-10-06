@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocfreecraft.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 18:46:51 by wkannouf          #+#    #+#             */
-/*   Updated: 2025/10/05 18:46:53 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:28:26 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static t_ptr	*ft_lstnew(void *content)
 {
 	t_ptr	*node;
 
+	if (!content)
+		return (NULL);
 	node = malloc(sizeof(t_ptr));
 	if (!node)
 		return (NULL);
@@ -68,8 +70,6 @@ void	*allocfreecraft(size_t size, void *ptr, short flag)
 	if (flag == 1 && !ptr)
 	{
 		alloc = malloc(size);
-		if (!alloc)
-			return (NULL);
 		ft_lstadd_back(&alloc_stock, ft_lstnew(alloc));
 	}
 	else if (flag == 2 && ptr)

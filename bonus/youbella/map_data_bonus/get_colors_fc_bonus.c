@@ -6,43 +6,27 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:50:08 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 04:34:08 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:08:24 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d_bonus.h"
 
-bool	identifiers_colors(t_map_data *map_data,
-							char **line, char *identifier, size_t i)
+static bool	check_comma(char *str)
 {
-	if ((*line)[i] == 'F' && identifier[4] == 'F')
+	size_t	i;
+	short	comma;
+
+	i = 0;
+	comma = 0;
+	while (str && str[i])
 	{
-		if (!ft_strncmp(&(*line)[i], "F ", 2)
-			|| !ft_strncmp(&(*line)[i], "F\t", 2))
-		{
-			1 && (map_data->str_f_color
-				= ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1),
-					identifier[4] = 'X');
-			allocfreecraft(0, map_data->str_f_color, 2);
-		}
-		else
+		if (str[i] == ',')
+			comma++;
+		if (comma > 2)
 			return (false);
+		i++;
 	}
-	else if ((*line)[i] == 'C' && identifier[5] == 'C')
-	{
-		if (!ft_strncmp(&(*line)[i], "C ", 2)
-			|| !ft_strncmp(&(*line)[i], "C\t", 2))
-		{
-			map_data->str_c_color
-				= ft_substr(*line, i, ft_strlen(&(*line)[i]) - 1);
-			allocfreecraft(0, map_data->str_c_color, 2);
-			identifier[5] = 'X';
-		}
-		else
-			return (false);
-	}
-	else
-		return (false);
 	return (true);
 }
 
@@ -74,18 +58,16 @@ static bool	check_colors_is_found(t_map_data *map_data)
 	return (true);
 }
 
-static short	check_syntax_f_color(t_map_data *map_data,
+static bool	check_syntax_f_color(t_map_data *map_data,
 								size_t i, size_t j, char **split)
 {
-	int		rgba[3];
-
 	split = ft_split(map_data->str_f_color, ',');
 	if (!split)
 		return (ft_putstr_fd("Error\nF color not found.\n", 2), 0);
 	allocfreecraft(0, split, 3);
 	while (split[i])
 	{
-		if (i == 3)
+		if (!check_comma(map_data->str_f_color) || i == 3)
 			return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
 		j = 0;
 		while (split[i][j])
@@ -96,27 +78,25 @@ static short	check_syntax_f_color(t_map_data *map_data,
 		}
 		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
 			return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
-		rgba[i] = ft_atoi(split[i]);
 		i++;
 	}
 	if (i != 3)
 		return (ft_putstr_fd("Error\nSyntax error in F color\n", 2), 0);
-	map_data->f_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
+	map_data->f_color = ft_atoi(split[0]) << 24
+		| ft_atoi(split[1]) << 16 | ft_atoi(split[2]) << 8 | 255;
 	return (1);
 }
 
-static short	check_syntax_c_color(t_map_data *map_data,
+static bool	check_syntax_c_color(t_map_data *map_data,
 								size_t i, size_t j, char **split)
 {
-	int		rgba[3];
-
 	split = ft_split(map_data->str_c_color, ',');
 	if (!split)
 		return (ft_putstr_fd("Error\nC color not found.\n", 2), 0);
 	allocfreecraft(0, split, 3);
 	while (split[i])
 	{
-		if (i == 3)
+		if (!check_comma(map_data->str_c_color) || i == 3)
 			return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
 		j = 0;
 		while (split[i][j])
@@ -127,12 +107,12 @@ static short	check_syntax_c_color(t_map_data *map_data,
 		}
 		if (ft_atoi(split[i]) < 0 || ft_atoi(split[i]) > 255)
 			return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
-		rgba[i] = ft_atoi(split[i]);
 		i++;
 	}
 	if (i != 3)
 		return (ft_putstr_fd("Error\nSyntax error in C color\n", 2), 0);
-	map_data->c_color = rgba[0] << 24 | rgba[1] << 16 | rgba[2] << 8 | 255;
+	map_data->c_color = ft_atoi(split[0]) << 24
+		| ft_atoi(split[1]) << 16 | ft_atoi(split[2]) << 8 | 255;
 	return (1);
 }
 
