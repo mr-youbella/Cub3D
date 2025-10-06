@@ -6,7 +6,7 @@
 #    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/10/06 14:40:21 by youbella         ###   ########.fr        #
+#    Updated: 2025/10/06 15:33:15 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ print:
 
 $(NAME): $(OBJS)
 		@printf "\033[34mWaiting...\n\033[0m"
+		@(cd .MLX42 && cmake -B build) 2> /dev/null 1>&2
 		@make -C .MLX42/build 1> /dev/null
 		@printf "\033[34mWaiting...\n\033[0m"
 		@make -C libft 1> /dev/null
@@ -77,6 +78,7 @@ $(NAME): $(OBJS)
 		@$(CC) $(FLAGS) -framework OpenGL -framework AppKit .MLX42/build/libmlx42.a -Iinclude -lglfw -L"$(shell brew --prefix glfw)/lib" $(OBJS) libft/libft.a AllocFreeCraft/allocfreecraft.a -o $(NAME)
 $(NAME_BNS): $(OBJS_BNS)
 		@printf "\033[34mWaiting...\n\033[0m"
+		@(cd .MLX42 && cmake -B build) 2> /dev/null 1>&2
 		@make -C .MLX42/build 1> /dev/null
 		@printf "\033[34mWaiting...\n\033[0m"
 		@make -C libft 1> /dev/null
@@ -91,14 +93,13 @@ bonus/%.o: bonus/%.c bonus/cub3d_bonus.h
 
 clean:
 	@printf "\033[31mGame files have been deleted.\033[0m\n"
-	@make clean -C .MLX42/build
+	@rm -rf .MLX42/build
 	@make clean -C libft
-	@make clean -C AllocFreeCraft
+	@make fclean -C AllocFreeCraft
 	@rm -f $(OBJS) $(OBJS_BNS)
 
 fclean: clean
 		@printf "\033[31mThe game has been deleted.\033[0m\n"
-		@make clean -C .MLX42/build
 		@make fclean -C libft
 		@make fclean -C AllocFreeCraft
 		@rm -f $(NAME) $(NAME_BNS)
