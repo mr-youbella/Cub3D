@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:47:09 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/06 14:16:11 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:53:15 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ bool	get_identifiers(int fd, char **line, t_map_data *map_data)
 	*line = get_next_line(fd);
 	allocfreecraft(0, *line, 2);
 	if (!identifiers_cub(map_data, 0, fd, line))
-		return (false);
+		return (ft_putstr_fd("Error\n", 2), false);
 	if (!get_name_images(map_data, 0))
 		return (false);
 	if (!get_hexa_colors(map_data))

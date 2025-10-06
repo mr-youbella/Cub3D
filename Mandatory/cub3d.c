@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wkannouf <wkannouf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 03:33:00 by wkannouf         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:26:45 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int	main(int argc, char **argv)
 	t_map_data	*map_data;
 	t_data		*data;
 
-	if (argc != 2)
-		return (1);
+	if (argc != 2 || ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4))
+		return (ft_putstr_fd("Error\nArgs or name map not valid.\n", 2), 1);
 	data = alloc_struct();
 	if (!data)
 		return (1);

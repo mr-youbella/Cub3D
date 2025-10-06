@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:00:35 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/13 05:09:13 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:11:23 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	check_x_door(t_data *data)
 
 void	key_door(t_data *data)
 {
-	if (mlx_is_key_down(data->game->init, MLX_KEY_O))
+	if (mlx_is_key_down(data->game->init, MLX_KEY_O) && !data->door->is_open)
 	{
 		if (data->map_data->map[(int)(data->pos_y - 1)]
 			[(int)(data->pos_x)] == 'D')

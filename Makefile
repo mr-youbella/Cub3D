@@ -6,12 +6,12 @@
 #    By: youbella <youbella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 22:03:53 by youbella          #+#    #+#              #
-#    Updated: 2025/10/06 15:33:15 by youbella         ###   ########.fr        #
+#    Updated: 2025/10/06 16:16:19 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -Imlx -O3 -ffast-math #-fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 NAME = cub3D
 NAME_BNS = cub3D_bonus

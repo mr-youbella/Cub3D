@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/02 05:21:35 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:26:37 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int	main(int argc, char **argv)
 {
 	t_data		*data;
 
-	if (argc != 2)
-		return (1);
+	if (argc != 2 || ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4))
+		return (ft_putstr_fd("Error\nArgs or name map not valid.\n", 2), 1);
 	data = alloc_struct(NULL, NULL, NULL);
 	if (!data)
 		return (1);
