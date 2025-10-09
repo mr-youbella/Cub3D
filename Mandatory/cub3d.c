@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/09 19:35:35 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:34:12 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_leaks(t_data *data, short is_all)
 {
-	if (is_all == 1)
+	if (is_all == 1 || is_all == 2)
 	{
 		mlx_delete_texture(data->walls->no_img);
 		mlx_delete_texture(data->walls->so_img);
