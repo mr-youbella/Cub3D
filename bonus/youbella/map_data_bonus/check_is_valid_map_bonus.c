@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_valid_map_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:58:47 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/21 16:18:54 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:22:03 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static short	is_valid_map2(char **map, size_t i, size_t j)
 		|| map[i][j] == 'E' || map[i][j] == 'W'
 		|| map[i][j] == 'D' || map[i][j] == '0')
 	{
+		if (!i || !j || !map[i + 1] || !map[i][j + 1])
+			return (-1);
 		if (map[i][j] == 'D')
 		{
 			if (!((map[i - 1][j] == '1' && map[i + 1][j] == '1')
@@ -30,8 +32,6 @@ static short	is_valid_map2(char **map, size_t i, size_t j)
 			|| map[i][j] == 'E' || map[i][j] == 'W')
 			identifier_count++;
 		if (identifier_count > 1)
-			return (-1);
-		if (!i || !j || !map[i + 1] || !map[i][j + 1])
 			return (-1);
 		if (map[i + 1][j] == ' ' || map[i][j + 1] == ' '
 			|| map[i - 1][j] == ' ' || map[i][j - 1] == ' ')

@@ -6,20 +6,23 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:29:17 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/06 16:26:45 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:35:35 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_leaks(t_data *data, bool is_all)
+static void	free_leaks(t_data *data, short is_all)
 {
-	if (is_all)
+	if (is_all == 1)
 	{
 		mlx_delete_texture(data->walls->no_img);
 		mlx_delete_texture(data->walls->so_img);
 		mlx_delete_texture(data->walls->ea_img);
 		mlx_delete_texture(data->walls->we_img);
+	}
+	if (is_all == 2)
+	{
 		mlx_delete_image(data->game->init, data->game->img);
 		mlx_terminate(data->game->init);
 	}
@@ -68,10 +71,14 @@ static short	init_window(t_data *data)
 		return (0);
 	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
 	if (!data->game->img)
-		return (0);
+		return (mlx_terminate(data->game->init), 0);
 	window = mlx_image_to_window(data->game->init, data->game->img, 0, 0);
 	if (window == -1)
+	{
+		mlx_delete_image(data->game->init, data->game->img);
+		mlx_terminate(data->game->init);
 		return (0);
+	}
 	return (1);
 }
 
@@ -129,5 +136,5 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(data->game->init, destroy, data->game);
 	mlx_close_hook(data->game->init, close_window, data->game);
 	mlx_loop(data->game->init);
-	free_leaks(data, 1);
+	free_leaks(data, 2);
 }

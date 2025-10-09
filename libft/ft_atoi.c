@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:44:20 by youbella          #+#    #+#             */
-/*   Updated: 2025/09/12 13:42:22 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:41:02 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static short	overflow(size_t result, size_t b_result, short sign)
-{
-	if ((result / 10 != b_result && sign == 1)
-		|| (result >= LONG_MAX && sign == 1))
-		return (-1);
-	if ((result / 10 != b_result && sign == -1)
-		|| (result > LONG_MAX && sign == -1))
-		return (0);
-	return (1);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -45,8 +34,8 @@ int	ft_atoi(const char *str)
 	{
 		b_result = result;
 		result = result * 10 + str[i++] - 48;
-		if (overflow(result, b_result, sign) != 1)
-			return (overflow(result, b_result, sign));
+		if (result > 2147483647)
+			return (-1);
 	}
 	return (result * sign);
 }

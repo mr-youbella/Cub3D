@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:54:54 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/06 16:26:37 by youbella         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:34:29 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,13 @@ static bool	init_window(t_data *data)
 		return (0);
 	data->game->img = mlx_new_image(data->game->init, WIDTH, HEIGHT);
 	if (!data->game->img)
-		return (0);
+		return (mlx_terminate(data->game->init), 0);
 	if (mlx_image_to_window(data->game->init, data->game->img, 0, 0) == -1)
+	{
+		mlx_delete_image(data->game->init, data->game->img);
+		mlx_terminate(data->game->init);
 		return (0);
+	}
 	return (1);
 }
 
@@ -95,7 +99,7 @@ int	main(int argc, char **argv)
 	if (!data->map_data)
 		return (free_leaks(data, 0), 1);
 	if (!init_window(data))
-		return (free_leaks(data, 1), 1);
+		return (free_leaks(data, 0), 1);
 	player_position(data);
 	if (!set_images(data))
 		return (free_leaks(data, 1), 1);
